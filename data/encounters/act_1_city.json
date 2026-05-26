@@ -679,5 +679,53 @@
       "civic_law",
       "doubt_pressure"
     ]
+  },
+  {
+    "id": "city_normal_delay_01",
+    "name": "The Bell Will Not Stop",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "closing_bell_specter"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_02",
+    "name": "A Bench Older Than Patience",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "waiting_bench_gremlin"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_03",
+    "name": "Public Hours End at Once",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "public_hours_clerk"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
   }
 ]

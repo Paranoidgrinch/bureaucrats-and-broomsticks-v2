@@ -903,7 +903,10 @@
       "normal_balance_patch_v1",
       "seal",
       "certification",
-      "stage_seal"
+      "stage_seal",
+      "delay",
+      "waiting",
+      "stage_delay"
     ]
   },
   {
@@ -1588,7 +1591,10 @@
       "city",
       "beast",
       "time",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "delay",
+      "waiting",
+      "stage_delay"
     ]
   },
   {
@@ -3555,6 +3561,184 @@
       "civic_law",
       "doubt_pressure",
       "stage_ordinance"
+    ]
+  },
+  {
+    "id": "closing_bell_specter",
+    "name": "Closing-Bell Specter",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "almost_closed",
+        "name": "Almost Closed",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "toll_the_hour",
+        "name": "Toll the Hour",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "last_call_at_the_counter",
+        "name": "Last Call at the Counter",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay"
+    ]
+  },
+  {
+    "id": "waiting_bench_gremlin",
+    "name": "Waiting-Bench Gremlin",
+    "max_hp": 28,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "make_room_for_no_one",
+        "name": "Make Room for No One",
+        "intent_type": "block",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "sagging_patience",
+        "name": "Sagging Patience",
+        "intent_type": "debuff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "splintered_seat",
+        "name": "Splintered Seat",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay"
+    ]
+  },
+  {
+    "id": "public_hours_clerk",
+    "name": "Public-Hours Clerk",
+    "max_hp": 32,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "point_to_the_hours",
+        "name": "Point to the Hours",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "close_the_latch",
+        "name": "Close the Latch",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "come_back_tomorrow",
+        "name": "Come Back Tomorrow",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay"
     ]
   }
 ]
