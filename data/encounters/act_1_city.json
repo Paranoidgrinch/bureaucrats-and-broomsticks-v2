@@ -155,7 +155,7 @@
     "enemies": [
       "filing_beetle"
     ],
-    "weight": 3,
+    "weight": 2,
     "tags": [
       "stage_form",
       "form",
@@ -217,13 +217,16 @@
     "act": 1,
     "difficulty": "easy",
     "enemies": [
-      "form_rat_swarm"
+      "form_rat_a",
+      "form_rat_b",
+      "form_rat_c"
     ],
-    "weight": 3,
+    "weight": 2,
     "tags": [
       "stage_form",
       "form",
-      "paperwork_intro"
+      "paperwork_intro",
+      "multi_enemy"
     ]
   },
   {
@@ -1014,6 +1017,55 @@
       "stage_counter",
       "counter",
       "doubt_intro"
+    ]
+  },
+  {
+    "id": "city_easy_form_04",
+    "name": "Copies Upon Copies",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "duplicate_copy_mite",
+      "duplicate_copy_mite"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_easy_form_05",
+    "name": "Required Field Left Blank",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "blank_line_leech"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro",
+      "panic_splash"
+    ]
+  },
+  {
+    "id": "city_easy_form_06",
+    "name": "Folded Statement Overhead",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "folded_affidavit_bat"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro",
+      "panic_splash"
     ]
   }
 ]

@@ -932,38 +932,39 @@
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "cabinet_shell",
-        "name": "Cabinet Shell",
-        "intent_type": "block",
+        "id": "crawl_into_the_folder",
+        "name": "Crawl into the Folder",
+        "intent_type": "debuff",
         "actions": [
           {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 9
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
           }
         ]
       },
       {
-        "id": "indexed_bite",
-        "name": "Indexed Bite",
+        "id": "mandible_clip",
+        "name": "Mandible Clip",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 6
+            "amount": 12
           }
         ]
       },
       {
-        "id": "file_under_pain",
-        "name": "File Under Pain",
+        "id": "misfile_the_request",
+        "name": "Misfile the Request",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 6
           },
           {
             "type": "apply_status",
@@ -976,11 +977,9 @@
     ],
     "tags": [
       "city",
-      "beast",
-      "tank",
-      "normal_balance_patch_v1",
       "form",
       "paperwork_intro",
+      "beetle",
       "stage_form"
     ]
   },
@@ -2988,7 +2987,7 @@
   {
     "id": "unsigned_form_ghost",
     "name": "Unsigned Form Ghost",
-    "max_hp": 18,
+    "max_hp": 30,
     "intent_pattern": "cycle",
     "intents": [
       {
@@ -3000,7 +2999,7 @@
             "type": "apply_status",
             "target": "player",
             "status": "paperwork",
-            "amount": 1
+            "amount": 3
           }
         ]
       },
@@ -3012,7 +3011,7 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 6
           }
         ]
       },
@@ -3024,7 +3023,7 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 3
+            "amount": 4
           },
           {
             "type": "apply_status",
@@ -3046,20 +3045,19 @@
   {
     "id": "margin_note_gnawer",
     "name": "Margin-Note Gnawer",
-    "max_hp": 19,
-    "intent_pattern": "weighted_random",
+    "max_hp": 33,
+    "intent_pattern": "cycle",
     "intents": [
       {
         "id": "add_a_correction",
         "name": "Add a Correction",
         "intent_type": "debuff",
-        "weight": 3,
         "actions": [
           {
             "type": "apply_status",
             "target": "player",
             "status": "paperwork",
-            "amount": 1
+            "amount": 3
           }
         ]
       },
@@ -3067,12 +3065,11 @@
         "id": "chew_the_blank_space",
         "name": "Chew the Blank Space",
         "intent_type": "attack",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 5
+            "amount": 7
           }
         ]
       },
@@ -3080,7 +3077,6 @@
         "id": "illegible_annotation",
         "name": "Illegible Annotation",
         "intent_type": "mixed",
-        "weight": 2,
         "actions": [
           {
             "type": "apply_status",
@@ -3108,7 +3104,7 @@
   {
     "id": "misfiled_page",
     "name": "Misfiled Page",
-    "max_hp": 16,
+    "max_hp": 27,
     "intent_pattern": "cycle",
     "intents": [
       {
@@ -3132,7 +3128,7 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 12
           }
         ]
       },
@@ -3144,13 +3140,13 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 2
+            "amount": 6
           },
           {
             "type": "apply_status",
             "target": "player",
             "status": "paperwork",
-            "amount": 1
+            "amount": 2
           }
         ]
       }
@@ -4672,6 +4668,429 @@
       "doubt_intro",
       "examiner",
       "stage_counter"
+    ]
+  },
+  {
+    "id": "form_rat_a",
+    "name": "Form Rat",
+    "max_hp": 11,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "gnaw_the_margins",
+        "name": "Gnaw the Margins",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "many_small_bites",
+        "name": "Many Small Bites",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "scatter_the_pages",
+        "name": "Scatter the Pages",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "rat",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "form_rat_b",
+    "name": "Form Rat",
+    "max_hp": 11,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "many_small_bites",
+        "name": "Many Small Bites",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "scatter_the_pages",
+        "name": "Scatter the Pages",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "gnaw_the_margins",
+        "name": "Gnaw the Margins",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "rat",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "form_rat_c",
+    "name": "Form Rat",
+    "max_hp": 11,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "scatter_the_pages",
+        "name": "Scatter the Pages",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "gnaw_the_margins",
+        "name": "Gnaw the Margins",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "many_small_bites",
+        "name": "Many Small Bites",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "rat",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "duplicate_copy_mite",
+    "name": "Duplicate Copy Mite",
+    "max_hp": 16,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "make_another_copy",
+        "name": "Make Another Copy",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "carbon_bite",
+        "name": "Carbon Bite",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "copy_filed_twice",
+        "name": "Copy Filed Twice",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "mite",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "blank_line_leech",
+    "name": "Blank-Line Leech",
+    "max_hp": 29,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "leave_it_blank",
+        "name": "Leave It Blank",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "ink_sucker_bite",
+        "name": "Ink-Sucker Bite",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "required_field",
+        "name": "Required Field",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "panic_splash",
+      "leech",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "folded_affidavit_bat",
+    "name": "Folded Affidavit Bat",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "unfold_the_statement",
+        "name": "Unfold the Statement",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "wing_of_fine_print",
+        "name": "Wing of Fine Print",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "clause_in_the_crease",
+        "name": "Clause in the Crease",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "panic_splash",
+      "bat",
+      "stage_form"
     ]
   }
 ]
