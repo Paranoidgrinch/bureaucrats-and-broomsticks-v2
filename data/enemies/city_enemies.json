@@ -482,7 +482,10 @@
       "city",
       "bureaucracy",
       "goblin",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "seal",
+      "certification",
+      "stage_seal"
     ]
   },
   {
@@ -712,7 +715,10 @@
       "city",
       "beast",
       "support",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "seal",
+      "certification",
+      "stage_seal"
     ]
   },
   {
@@ -828,7 +834,10 @@
     "tags": [
       "city",
       "beast",
-      "bureaucracy"
+      "bureaucracy",
+      "seal",
+      "certification",
+      "stage_seal"
     ]
   },
   {
@@ -888,7 +897,10 @@
     "tags": [
       "city",
       "deadline",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "seal",
+      "certification",
+      "stage_seal"
     ]
   },
   {
@@ -3178,6 +3190,187 @@
       "paperwork_intro",
       "paper",
       "stage_form"
+    ]
+  },
+  {
+    "id": "wax_notary",
+    "name": "Wax Notary",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "warm_the_seal",
+        "name": "Warm the Seal",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "press_into_record",
+        "name": "Press into Record",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "certify_the_delay",
+        "name": "Certify the Delay",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal"
+    ]
+  },
+  {
+    "id": "red_ribbon_serpent",
+    "name": "Red Ribbon Serpent",
+    "max_hp": 28,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "coil_the_file",
+        "name": "Coil the File",
+        "intent_type": "block",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "bind_the_request",
+        "name": "Bind the Request",
+        "intent_type": "mixed",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "tighten_procedure",
+        "name": "Tighten Procedure",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal"
+    ]
+  },
+  {
+    "id": "seal_witness",
+    "name": "Seal Witness",
+    "max_hp": 26,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "watch_you_sign",
+        "name": "Watch You Sign",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "raise_the_counter_screen",
+        "name": "Raise the Counter Screen",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "attest_with_a_cane",
+        "name": "Attest with a Cane",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal"
     ]
   }
 ]

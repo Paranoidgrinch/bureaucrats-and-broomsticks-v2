@@ -59,7 +59,12 @@
       "ink_spattered_scribe",
       "seal_bearer_toad"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification"
+    ]
   },
   {
     "id": "city_normal_03",
@@ -161,7 +166,12 @@
       "civic_bell_ringer",
       "seal_bearer_toad"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification"
+    ]
   },
   {
     "id": "city_normal_07",
@@ -246,7 +256,12 @@
       "tollhouse_sprite",
       "stamp_goblin"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification"
+    ]
   },
   {
     "id": "city_normal_10",
@@ -555,6 +570,54 @@
       "stage_form",
       "form",
       "paperwork_intro"
+    ]
+  },
+  {
+    "id": "city_normal_seal_01",
+    "name": "The Wax Is Still Warm",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "wax_notary"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_seal_02",
+    "name": "Bound in Red Ribbon",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "red_ribbon_serpent"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_seal_03",
+    "name": "Witnessed and Filed",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "seal_witness"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure"
     ]
   }
 ]
