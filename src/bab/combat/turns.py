@@ -15,10 +15,19 @@ def start_player_turn(state: CombatState, rng: Random) -> None:
     state.log.append(f"--- Turn {state.turn} begins ---")
     state.player.block = 0
     state.reset_energy()
-
     draw_amount = 5
-    panic = state.player.get_status_amount("panic")
 
+    fatigue = state.player.get_status_amount("fatigue")
+    if fatigue > 0:
+        energy_penalty = min(1, state.energy)
+        state.energy = max(0, state.energy - energy_penalty)
+        state.player.reduce_status("fatigue", 1)
+        state.log.append(
+            f"Player is affected by {state.status_name('fatigue')} "
+            f"and loses {energy_penalty} Energy."
+        )
+
+    panic = state.player.get_status_amount("panic")
     if panic > 0:
         draw_penalty = min(panic, draw_amount)
         draw_amount -= draw_penalty
@@ -29,7 +38,6 @@ def start_player_turn(state: CombatState, rng: Random) -> None:
         )
 
     draw_cards(state, amount=draw_amount, rng=rng)
-
 
 def end_player_turn(state: CombatState) -> None:
     state.log.append("Player ends the turn.")

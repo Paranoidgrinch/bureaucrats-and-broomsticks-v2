@@ -36,6 +36,19 @@
     ]
   },
   {
+    "id": "fatigue",
+    "name": "Fatigue",
+    "description": "At the start of the player's turn, lose 1 Energy. One stack is removed when this triggers.",
+    "stacking": "intensity",
+    "trigger": "player_turn_start",
+    "is_negative": true,
+    "tags": [
+      "mental",
+      "energy_reduction",
+      "delay"
+    ]
+  },
+  {
     "id": "strength",
     "name": "Strength",
     "description": "This character's attacks deal additional damage equal to its Strength.",
