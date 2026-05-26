@@ -944,7 +944,10 @@
       "city",
       "beast",
       "tank",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "form",
+      "paperwork_intro",
+      "stage_form"
     ]
   },
   {
@@ -1222,7 +1225,10 @@
       "beast",
       "swarm",
       "bureaucracy",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "form",
+      "paperwork_intro",
+      "stage_form"
     ]
   },
   {
@@ -1457,7 +1463,10 @@
       "city",
       "archive",
       "beast",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "form",
+      "paperwork_intro",
+      "stage_form"
     ]
   },
   {
@@ -1501,7 +1510,10 @@
       "city",
       "archive",
       "paper",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "form",
+      "paperwork_intro",
+      "stage_form"
     ]
   },
   {
@@ -2988,6 +3000,184 @@
       "doubt_intro",
       "clerk",
       "stage_counter"
+    ]
+  },
+  {
+    "id": "unsigned_form_ghost",
+    "name": "Unsigned Form Ghost",
+    "max_hp": 18,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "float_back_unfinished",
+        "name": "Float Back Unfinished",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "edge_of_the_page",
+        "name": "Edge of the Page",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "missing_signature",
+        "name": "Missing Signature",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "spirit",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "margin_note_gnawer",
+    "name": "Margin-Note Gnawer",
+    "max_hp": 19,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "add_a_correction",
+        "name": "Add a Correction",
+        "intent_type": "debuff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "chew_the_blank_space",
+        "name": "Chew the Blank Space",
+        "intent_type": "attack",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "illegible_annotation",
+        "name": "Illegible Annotation",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "vermin",
+      "stage_form"
+    ]
+  },
+  {
+    "id": "misfiled_page",
+    "name": "Misfiled Page",
+    "max_hp": 16,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "attach_itself",
+        "name": "Attach Itself",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "papercut",
+        "name": "Papercut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "wrong_folder",
+        "name": "Wrong Folder",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 2
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "form",
+      "paperwork_intro",
+      "paper",
+      "stage_form"
     ]
   }
 ]

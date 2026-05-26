@@ -135,7 +135,12 @@
     "enemies": [
       "filing_beetle"
     ],
-    "weight": 2
+    "weight": 3,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro"
+    ]
   },
   {
     "id": "city_normal_05",
@@ -189,7 +194,12 @@
     "enemies": [
       "form_rat_swarm"
     ],
-    "weight": 2
+    "weight": 3,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro"
+    ]
   },
   {
     "id": "city_easy_07",
@@ -500,6 +510,51 @@
       "stage_counter",
       "counter",
       "doubt_intro"
+    ]
+  },
+  {
+    "id": "city_easy_form_01",
+    "name": "Unsigned in Triplicate",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "unsigned_form_ghost"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro"
+    ]
+  },
+  {
+    "id": "city_easy_form_02",
+    "name": "Correction in the Margin",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "margin_note_gnawer"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro"
+    ]
+  },
+  {
+    "id": "city_easy_form_03",
+    "name": "The Page That Followed You",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "misfiled_page"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_form",
+      "form",
+      "paperwork_intro"
     ]
   }
 ]
