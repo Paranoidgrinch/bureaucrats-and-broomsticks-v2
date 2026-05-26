@@ -2809,11 +2809,11 @@
   {
     "id": "wrong_window_scribe",
     "name": "Wrong-Window Scribe",
-    "max_hp": 18,
+    "max_hp": 25,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "ask_for_form_you_do_not_have",
+        "id": "ask_for_a_form_you_do_not_have",
         "name": "Ask for a Form You Do Not Have",
         "intent_type": "debuff",
         "actions": [
@@ -2833,7 +2833,7 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 12
           }
         ]
       },
@@ -2845,7 +2845,7 @@
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 3
+            "amount": 7
           },
           {
             "type": "apply_status",
@@ -2867,14 +2867,13 @@
   {
     "id": "jurisdiction_snail",
     "name": "Jurisdiction Snail",
-    "max_hp": 22,
-    "intent_pattern": "weighted_random",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
     "intents": [
       {
         "id": "declare_it_not_my_desk",
         "name": "Declare It Not My Desk",
         "intent_type": "debuff",
-        "weight": 3,
         "actions": [
           {
             "type": "apply_status",
@@ -2885,15 +2884,14 @@
         ]
       },
       {
-        "id": "retreat_under_counter",
+        "id": "retreat_under_the_counter",
         "name": "Retreat Under the Counter",
         "intent_type": "block",
-        "weight": 2,
         "actions": [
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 5
+            "amount": 12
           }
         ]
       },
@@ -2901,12 +2899,11 @@
         "id": "slow_rubber_stamp",
         "name": "Slow Rubber Stamp",
         "intent_type": "mixed",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 3
+            "amount": 9
           },
           {
             "type": "apply_status",
@@ -2928,7 +2925,7 @@
   {
     "id": "jurisdictional_clerkling",
     "name": "Jurisdictional Clerkling",
-    "max_hp": 20,
+    "max_hp": 19,
     "intent_pattern": "cycle",
     "intents": [
       {
@@ -2945,26 +2942,37 @@
         ]
       },
       {
-        "id": "paper_cut",
-        "name": "Paper Cut",
+        "id": "paper_cuts",
+        "name": "Paper Cuts",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 5
+            "amount": 6
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
           }
         ]
       },
       {
         "id": "provisional_refusal",
         "name": "Provisional Refusal",
-        "intent_type": "block",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 4
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
           }
         ]
       }
@@ -4354,6 +4362,316 @@
       "panic_intro",
       "homunculus",
       "stage_queue"
+    ]
+  },
+  {
+    "id": "counter_of_denial_lesser",
+    "name": "Counter of Denial",
+    "max_hp": 27,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "deny_the_premise",
+        "name": "Deny the Premise",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "slam_the_hatch",
+        "name": "Slam the Hatch",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "not_admissible",
+        "name": "Not Admissible",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "furniture",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "blue_slip_sprite",
+    "name": "Blue Slip Sprite",
+    "max_hp": 23,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "issue_a_blue_slip",
+        "name": "Issue a Blue Slip",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "flutter_into_your_face",
+        "name": "Flutter into Your Face",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "wrong_department_mark",
+        "name": "Wrong Department Mark",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "sprite",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "counter_bell_toad",
+    "name": "Counter Bell Toad",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "ring_for_the_wrong_person",
+        "name": "Ring for the Wrong Person",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "tongue_stamp",
+        "name": "Tongue Stamp",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "declare_the_bell_binding",
+        "name": "Declare the Bell Binding",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "toad",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "receipt_eyed_clerk",
+    "name": "Receipt-Eyed Clerk",
+    "max_hp": 24,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "ask_for_proof_of_arrival",
+        "name": "Ask for Proof of Arrival",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "receipt_lash",
+        "name": "Receipt Lash",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 13
+          }
+        ]
+      },
+      {
+        "id": "question_the_date",
+        "name": "Question the Date",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "clerk",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "triplicate_examiner",
+    "name": "Triplicate Examiner",
+    "max_hp": 33,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "compare_the_copies",
+        "name": "Compare the Copies",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stamp_discrepancy",
+        "name": "Stamp Discrepancy",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "id": "third_copy_contradicts_you",
+        "name": "Third Copy Contradicts You",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "examiner",
+      "stage_counter"
     ]
   }
 ]
