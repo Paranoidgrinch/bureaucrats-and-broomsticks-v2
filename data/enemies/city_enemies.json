@@ -1109,7 +1109,10 @@
     "tags": [
       "city",
       "elite",
-      "construct"
+      "construct",
+      "enforcement",
+      "civic_force",
+      "stage_enforcement"
     ]
   },
   {
@@ -1723,7 +1726,10 @@
       "normal_balance_patch_v1",
       "ordinance",
       "civic_law",
-      "stage_ordinance"
+      "stage_ordinance",
+      "enforcement",
+      "civic_force",
+      "stage_enforcement"
     ]
   },
   {
@@ -2137,7 +2143,10 @@
       "bailiff",
       "appeal",
       "escalation",
-      "stage_appeal"
+      "stage_appeal",
+      "enforcement",
+      "civic_force",
+      "stage_enforcement"
     ]
   },
   {
@@ -2195,7 +2204,10 @@
       "bailiff",
       "appeal",
       "escalation",
-      "stage_appeal"
+      "stage_appeal",
+      "enforcement",
+      "civic_force",
+      "stage_enforcement"
     ]
   },
   {
@@ -3934,6 +3946,180 @@
       "doubt_pressure",
       "paperwork_pressure",
       "stage_appeal"
+    ]
+  },
+  {
+    "id": "warrant_bailiff",
+    "name": "Warrant Bailiff",
+    "max_hp": 38,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "read_the_warrant",
+        "name": "Read the Warrant",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "serve_notice",
+        "name": "Serve Notice",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "brace_behind_authority",
+        "name": "Brace Behind Authority",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement"
+    ]
+  },
+  {
+    "id": "levy_constable",
+    "name": "Levy Constable",
+    "max_hp": 36,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "raise_the_levy",
+        "name": "Raise the Levy",
+        "intent_type": "buff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "shield_the_receipt_book",
+        "name": "Shield the Receipt Book",
+        "intent_type": "block",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "collect_by_force",
+        "name": "Collect by Force",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement"
+    ]
+  },
+  {
+    "id": "gatehouse_enforcer",
+    "name": "Gatehouse Enforcer",
+    "max_hp": 40,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "lower_the_bar",
+        "name": "Lower the Bar",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "official_shove",
+        "name": "Official Shove",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "call_more_authority",
+        "name": "Call More Authority",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement"
     ]
   }
 ]

@@ -786,5 +786,56 @@
       "doubt_pressure",
       "paperwork_pressure"
     ]
+  },
+  {
+    "id": "city_normal_enforcement_01",
+    "name": "Warrant Served in Person",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "warrant_bailiff"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_02",
+    "name": "The Levy Comes Due",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "levy_constable"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_03",
+    "name": "The Gatehouse Enforces Procedure",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "gatehouse_enforcer"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure"
+    ]
   }
 ]
