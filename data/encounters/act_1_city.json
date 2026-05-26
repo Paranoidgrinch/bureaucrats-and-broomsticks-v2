@@ -101,7 +101,13 @@
     "enemies": [
       "senior_clerk"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "elite_enforcement"
+    ]
   },
   {
     "id": "city_elite_02",
@@ -111,7 +117,13 @@
     "enemies": [
       "red_tape_golem"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "elite_enforcement"
+    ]
   },
   {
     "id": "city_boss_01",
@@ -369,7 +381,13 @@
       "counter_of_delay",
       "counter_of_certification"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "elite_delay"
+    ]
   },
   {
     "id": "city_elite_04",
@@ -379,7 +397,13 @@
     "enemies": [
       "archivists_hound"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "elite_delay"
+    ]
   },
   {
     "id": "city_elite_05",
@@ -389,7 +413,13 @@
     "enemies": [
       "stampede_of_stamps"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "elite_appeal"
+    ]
   },
   {
     "id": "city_elite_06",
@@ -400,7 +430,13 @@
       "bailiff_of_writs",
       "bailiff_of_warrants"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "elite_enforcement"
+    ]
   },
   {
     "id": "city_elite_07",
@@ -410,7 +446,13 @@
     "enemies": [
       "ink_witch_auditor"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "elite_appeal"
+    ]
   },
   {
     "id": "city_elite_08",
@@ -420,7 +462,13 @@
     "enemies": [
       "licensed_chimera"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "elite_enforcement"
+    ]
   },
   {
     "id": "city_boss_02",
