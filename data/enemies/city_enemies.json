@@ -377,12 +377,12 @@
   {
     "id": "queue_imp",
     "name": "Queue Imp",
-    "max_hp": 18,
+    "max_hp": 22,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "extend_the_line",
-        "name": "Extend the Line",
+        "id": "call_the_next_number",
+        "name": "Call the Next Number",
         "intent_type": "debuff",
         "actions": [
           {
@@ -394,14 +394,26 @@
         ]
       },
       {
-        "id": "tiny_shove",
-        "name": "Tiny Shove",
+        "id": "desk_jab",
+        "name": "Desk Jab",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "you_are_not_being_served",
+        "name": "You Are Not Being Served",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 5
           },
           {
             "type": "apply_status",
@@ -414,9 +426,10 @@
     ],
     "tags": [
       "city",
-      "bureaucracy",
+      "queue",
+      "panic_intro",
       "small",
-      "normal_balance_patch_v1"
+      "stage_queue"
     ]
   },
   {
@@ -550,19 +563,18 @@
   {
     "id": "pigeon_courier",
     "name": "Pigeon Courier",
-    "max_hp": 22,
-    "intent_pattern": "weighted_random",
+    "max_hp": 19,
+    "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "urgent_notice",
-        "name": "Urgent Notice",
+        "id": "misdelivered_notice",
+        "name": "Misdelivered Notice",
         "intent_type": "mixed",
-        "weight": 3,
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 3
+            "amount": 5
           },
           {
             "type": "apply_status",
@@ -573,28 +585,31 @@
         ]
       },
       {
-        "id": "express_delivery",
-        "name": "Express Delivery",
+        "id": "peck_and_scatter",
+        "name": "Peck and Scatter",
         "intent_type": "attack",
-        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "drop_the_wrong_parcel",
+        "name": "Drop the Wrong Parcel",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
             "amount": 5
-          }
-        ]
-      },
-      {
-        "id": "drop_the_summons",
-        "name": "Drop the Summons",
-        "intent_type": "debuff",
-        "weight": 2,
-        "actions": [
+          },
           {
             "type": "apply_status",
             "target": "player",
-            "status": "paperwork",
+            "status": "panic",
             "amount": 1
           }
         ]
@@ -602,9 +617,10 @@
     ],
     "tags": [
       "city",
+      "queue",
+      "panic_intro",
       "courier",
-      "beast",
-      "normal_balance_patch_v1"
+      "stage_queue"
     ]
   },
   {
@@ -2740,12 +2756,12 @@
   {
     "id": "number_ticket_wisp",
     "name": "Number-Ticket Wisp",
-    "max_hp": 16,
+    "max_hp": 22,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "call_next_number",
-        "name": "Call Next Number",
+        "id": "now_serving_808",
+        "name": "Now Serving 808",
         "intent_type": "debuff",
         "actions": [
           {
@@ -2757,93 +2773,27 @@
         ]
       },
       {
-        "id": "flutter_past",
-        "name": "Flutter Past",
+        "id": "flicker_past",
+        "name": "Flicker Past",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 4
+            "amount": 8
           }
         ]
       },
       {
-        "id": "lose_your_place",
-        "name": "Lose Your Place",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 3
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "panic",
-            "amount": 1
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "queue",
-      "panic_intro",
-      "small",
-      "stage_queue"
-    ]
-  },
-  {
-    "id": "line_cutter_familiar",
-    "name": "Line-Cutter Familiar",
-    "max_hp": 20,
-    "intent_pattern": "weighted_random",
-    "intents": [
-      {
-        "id": "dart_ahead",
-        "name": "Dart Ahead",
-        "intent_type": "mixed",
-        "weight": 3,
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 4
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "panic",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "hold_the_gap",
-        "name": "Hold the Gap",
-        "intent_type": "block",
-        "weight": 2,
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 5
-          }
-        ]
-      },
-      {
-        "id": "wrong_window_whisper",
-        "name": "Wrong-Window Whisper",
+        "id": "lost_your_place",
+        "name": "Lost Your Place",
         "intent_type": "debuff",
-        "weight": 2,
         "actions": [
           {
             "type": "apply_status",
             "target": "player",
             "status": "panic",
-            "amount": 1
+            "amount": 2
           }
         ]
       }
@@ -2852,7 +2802,7 @@
       "city",
       "queue",
       "panic_intro",
-      "beast",
+      "spirit",
       "stage_queue"
     ]
   },
@@ -4091,6 +4041,319 @@
       "block_pressure",
       "strength_pressure",
       "stage_enforcement"
+    ]
+  },
+  {
+    "id": "line_cutter_weasel",
+    "name": "Line-Cutter Weasel",
+    "max_hp": 20,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "cut_ahead",
+        "name": "Cut Ahead",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "hiss_at_the_queue",
+        "name": "Hiss at the Queue",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "guard_the_gap",
+        "name": "Guard the Gap",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "beast",
+      "stage_queue"
+    ]
+  },
+  {
+    "id": "velvet_rope_mimic",
+    "name": "Velvet Rope Mimic",
+    "max_hp": 22,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "shift_the_barrier",
+        "name": "Shift the Barrier",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "snap_back",
+        "name": "Snap Back",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      },
+      {
+        "id": "hold_the_line",
+        "name": "Hold the Line",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "mimic",
+      "stage_queue"
+    ]
+  },
+  {
+    "id": "closing_bell_sprite",
+    "name": "Closing-Bell Sprite",
+    "max_hp": 19,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "last_call",
+        "name": "Last Call",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "ring_for_closure",
+        "name": "Ring for Closure",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "too_late_today",
+        "name": "Too Late Today",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "bell",
+      "stage_queue"
+    ]
+  },
+  {
+    "id": "waiting_room_gnawer",
+    "name": "Waiting-Room Gnawer",
+    "max_hp": 19,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "rustle_under_the_bench",
+        "name": "Rustle Under the Bench",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "ankle_nip",
+        "name": "Ankle Nip",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "scatter_the_tickets",
+        "name": "Scatter the Tickets",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "vermin",
+      "stage_queue"
+    ]
+  },
+  {
+    "id": "queue_crier_homunculus",
+    "name": "Queue-Crier Homunculus",
+    "max_hp": 25,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "recite_the_waiting_order",
+        "name": "Recite the Waiting Order",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "monotone_rebuke_first",
+        "name": "Monotone Rebuke",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "monotone_rebuke_second",
+        "name": "Monotone Rebuke",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "homunculus",
+      "stage_queue"
     ]
   }
 ]

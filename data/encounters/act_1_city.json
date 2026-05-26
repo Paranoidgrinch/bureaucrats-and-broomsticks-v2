@@ -7,7 +7,7 @@
     "enemies": [
       "queue_imp"
     ],
-    "weight": 3,
+    "weight": 2,
     "tags": [
       "stage_queue",
       "queue",
@@ -137,7 +137,7 @@
   },
   {
     "id": "city_easy_04",
-    "name": "Urgent Delivery",
+    "name": "Misdelivery in the Queue",
     "act": 1,
     "difficulty": "easy",
     "enemies": [
@@ -541,7 +541,7 @@
     "act": 1,
     "difficulty": "easy",
     "enemies": [
-      "line_cutter_familiar"
+      "line_cutter_weasel"
     ],
     "weight": 2,
     "tags": [
@@ -884,6 +884,66 @@
       "civic_force",
       "block_pressure",
       "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_easy_queue_03",
+    "name": "Held Behind the Velvet Rope",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "velvet_rope_mimic"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
+  },
+  {
+    "id": "city_easy_queue_04",
+    "name": "The Bell Is About to Ring",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "closing_bell_sprite"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
+  },
+  {
+    "id": "city_easy_queue_05",
+    "name": "Something Under the Bench",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "waiting_room_gnawer"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
+  },
+  {
+    "id": "city_easy_queue_06",
+    "name": "Called to No Window",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "queue_crier_homunculus"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
     ]
   }
 ]
