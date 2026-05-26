@@ -7,7 +7,12 @@
     "enemies": [
       "queue_imp"
     ],
-    "weight": 3
+    "weight": 3,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
   },
   {
     "id": "city_easy_02",
@@ -110,7 +115,12 @@
     "enemies": [
       "pigeon_courier"
     ],
-    "weight": 2
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
   },
   {
     "id": "city_easy_05",
@@ -406,5 +416,35 @@
       "receipt_mimic"
     ],
     "weight": 1
+  },
+  {
+    "id": "city_easy_queue_01",
+    "name": "Now Serving the Wrong Number",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "number_ticket_wisp"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
+  },
+  {
+    "id": "city_easy_queue_02",
+    "name": "The Line Moves Without You",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "line_cutter_familiar"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_queue",
+      "queue",
+      "panic_intro"
+    ]
   }
 ]

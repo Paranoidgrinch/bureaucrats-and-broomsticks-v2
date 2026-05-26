@@ -2693,5 +2693,124 @@
       "mimic",
       "treasure"
     ]
+  },
+  {
+    "id": "number_ticket_wisp",
+    "name": "Number-Ticket Wisp",
+    "max_hp": 16,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "call_next_number",
+        "name": "Call Next Number",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "flutter_past",
+        "name": "Flutter Past",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "lose_your_place",
+        "name": "Lose Your Place",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "small",
+      "stage_queue"
+    ]
+  },
+  {
+    "id": "line_cutter_familiar",
+    "name": "Line-Cutter Familiar",
+    "max_hp": 20,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "dart_ahead",
+        "name": "Dart Ahead",
+        "intent_type": "mixed",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "hold_the_gap",
+        "name": "Hold the Gap",
+        "intent_type": "block",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "wrong_window_whisper",
+        "name": "Wrong-Window Whisper",
+        "intent_type": "debuff",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "queue",
+      "panic_intro",
+      "beast",
+      "stage_queue"
+    ]
   }
 ]
