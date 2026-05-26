@@ -773,7 +773,10 @@
     "tags": [
       "city",
       "construct",
-      "tank"
+      "tank",
+      "ordinance",
+      "civic_law",
+      "stage_ordinance"
     ]
   },
   {
@@ -1418,7 +1421,10 @@
       "city",
       "spirit",
       "bureaucracy",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "ordinance",
+      "civic_law",
+      "stage_ordinance"
     ]
   },
   {
@@ -1699,7 +1705,10 @@
       "city",
       "construct",
       "bailiff",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "ordinance",
+      "civic_law",
+      "stage_ordinance"
     ]
   },
   {
@@ -3371,6 +3380,181 @@
       "certification",
       "paperwork_pressure",
       "stage_seal"
+    ]
+  },
+  {
+    "id": "ordinance_tablet",
+    "name": "Ordinance Tablet",
+    "max_hp": 32,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "quote_subsection",
+        "name": "Quote Subsection",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stone_margin",
+        "name": "Stone Margin",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "falling_clause",
+        "name": "Falling Clause",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance"
+    ]
+  },
+  {
+    "id": "bylaw_gargoyle",
+    "name": "Bylaw Gargoyle",
+    "max_hp": 34,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "recite_the_bylaw",
+        "name": "Recite the Bylaw",
+        "intent_type": "debuff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "fold_wings_over_plaque",
+        "name": "Fold Wings over Plaque",
+        "intent_type": "block",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "drop_from_the_arch",
+        "name": "Drop from the Arch",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance"
+    ]
+  },
+  {
+    "id": "street_law_writ",
+    "name": "Street-Law Writ",
+    "max_hp": 28,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "declare_the_cobble_precedent",
+        "name": "Declare the Cobble Precedent",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "stamp_the_pavement",
+        "name": "Stamp the Pavement",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "raise_a_legal_corner",
+        "name": "Raise a Legal Corner",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance"
     ]
   }
 ]

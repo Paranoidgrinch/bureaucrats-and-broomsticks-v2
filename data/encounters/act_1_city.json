@@ -85,7 +85,13 @@
     "enemies": [
       "municipal_gargoyle"
     ],
-    "weight": 2
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
   },
   {
     "id": "city_elite_01",
@@ -325,7 +331,13 @@
       "street_ordinance_wisp",
       "cobblestone_bailiff"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
   },
   {
     "id": "city_normal_16",
@@ -618,6 +630,54 @@
       "seal",
       "certification",
       "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_01",
+    "name": "Subsection Carved in Stone",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "ordinance_tablet"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_02",
+    "name": "The Bylaw Looks Down",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "bylaw_gargoyle"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_03",
+    "name": "The Street Cites Precedent",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "street_law_writ"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
     ]
   }
 ]
