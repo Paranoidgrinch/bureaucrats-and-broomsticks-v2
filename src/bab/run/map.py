@@ -15,6 +15,38 @@ MapNodeType = Literal[
 
 FIRST_ELITE_DEPTH = 6
 
+STAGED_PILGRIMAGE_STAGES: dict[int, str] = {
+    1: "queue",
+    2: "counter",
+    3: "form",
+    4: "seal",
+    5: "ordinance",
+    6: "delay",
+    7: "appeal",
+    8: "enforcement",
+    9: "final_office",
+}
+
+STAGED_PILGRIMAGE_BOSS_STAGE = "commissioner"
+
+STAGED_PILGRIMAGE_WEIGHTS: dict[int, tuple[tuple[MapNodeType, float], ...]] = {
+    1: (("combat", 1.0),),
+    2: (("combat", 1.0),),
+    3: (("combat", 7.0), ("event", 3.0)),
+    4: (("combat", 5.0), ("event", 2.0), ("treasure", 1.0)),
+    5: (("combat", 6.0), ("event", 2.0), ("treasure", 1.0)),
+    6: (("combat", 5.0), ("event", 2.0), ("treasure", 1.0), ("elite", 1.0)),
+    7: (("combat", 5.0), ("event", 2.0), ("treasure", 1.0), ("elite", 1.0)),
+    8: (("combat", 6.0), ("event", 1.0), ("treasure", 1.0), ("elite", 2.0)),
+    9: (("waiting_room", 1.0),),
+}
+
+_CAPPED_NODE_TYPES: dict[MapNodeType, str] = {
+    "event": "events",
+    "treasure": "treasures",
+    "elite": "elites",
+}
+
 
 @dataclass(frozen=True)
 class MapNode:
@@ -25,6 +57,7 @@ class MapNode:
     encounter_difficulty: EncounterDifficulty | None = None
     event_type: EventType | None = None
     encounter_id: str | None = None
+    stage: str | None = None
     next_node_ids: tuple[str, ...] = ()
 
 
@@ -210,6 +243,119 @@ def _make_node(
     )
 
 
+def _choose_staged_node_type(
+    *,
+    rng: Random,
+    depth: int,
+    first_elite_depth: int,
+    node_type_counts: dict[str, int],
+    max_events: int,
+    max_treasures: int,
+    max_elites: int,
+) -> MapNodeType:
+    population: list[MapNodeType] = []
+    weights: list[float] = []
+    caps = {
+        "events": max_events,
+        "treasures": max_treasures,
+        "elites": max_elites,
+    }
+
+    for node_type, weight in STAGED_PILGRIMAGE_WEIGHTS[depth]:
+        if node_type == "elite" and depth < first_elite_depth:
+            continue
+
+        capped_count_key = _CAPPED_NODE_TYPES.get(node_type)
+        if (
+            capped_count_key is not None
+            and node_type_counts[capped_count_key] >= caps[capped_count_key]
+        ):
+            continue
+
+        population.append(node_type)
+        weights.append(weight)
+
+    if not population:
+        return "combat"
+
+    return _weighted_node_choice(
+        rng=rng,
+        population=population,
+        weights=weights,
+    )
+
+
+def _make_staged_node(
+    *,
+    rng: Random,
+    act: int,
+    depth: int,
+    lane: int,
+    first_elite_depth: int,
+    node_type_counts: dict[str, int],
+    max_events: int,
+    max_treasures: int,
+    max_elites: int,
+) -> MapNode:
+    stage = STAGED_PILGRIMAGE_STAGES[depth]
+    node_type = _choose_staged_node_type(
+        rng=rng,
+        depth=depth,
+        first_elite_depth=first_elite_depth,
+        node_type_counts=node_type_counts,
+        max_events=max_events,
+        max_treasures=max_treasures,
+        max_elites=max_elites,
+    )
+
+    capped_count_key = _CAPPED_NODE_TYPES.get(node_type)
+    if capped_count_key is not None:
+        node_type_counts[capped_count_key] += 1
+
+    node_id = f"act_{act}_d{depth:02d}_n{lane:02d}"
+
+    if node_type == "combat":
+        return MapNode(
+            id=node_id,
+            act=act,
+            depth=depth,
+            node_type=node_type,
+            encounter_difficulty=combat_difficulty_for_depth(
+                depth,
+                len(STAGED_PILGRIMAGE_STAGES),
+            ),
+            stage=stage,
+        )
+
+    if node_type == "elite":
+        return MapNode(
+            id=node_id,
+            act=act,
+            depth=depth,
+            node_type=node_type,
+            encounter_difficulty="elite",
+            stage=stage,
+        )
+
+    if node_type == "event":
+        return MapNode(
+            id=node_id,
+            act=act,
+            depth=depth,
+            node_type=node_type,
+            event_type=_choose_event_type(rng),
+            stage=stage,
+        )
+
+    return MapNode(
+        id=node_id,
+        act=act,
+        depth=depth,
+        node_type=node_type,
+        stage=stage,
+    )
+
+
 def _adjacent_lanes(
     *,
     lane: int,
@@ -390,6 +536,165 @@ def generate_act_map(
         depth=boss_depth,
         node_type="boss",
         encounter_difficulty="boss",
+    )
+    nodes[boss_node.id] = boss_node
+
+    for lane in layers[-1]:
+        node_id = f"act_{act}_d{steps_before_boss:02d}_n{lane:02d}"
+        nodes[node_id] = replace(
+            nodes[node_id],
+            next_node_ids=(boss_node.id,),
+        )
+
+    start_node_ids = tuple(
+        f"act_{act}_d01_n{lane:02d}"
+        for lane in layers[0]
+    )
+
+    return RunMap(
+        act=act,
+        nodes=nodes,
+        start_node_ids=start_node_ids,
+        boss_node_id=boss_node.id,
+    )
+
+
+def generate_staged_pilgrimage_map(
+    rng: Random,
+    *,
+    act: int = 1,
+    steps_before_boss: int = 9,
+    width: int = 4,
+    first_elite_depth: int = FIRST_ELITE_DEPTH,
+    max_events: int = 3,
+    max_treasures: int = 1,
+    max_elites: int = 2,
+) -> RunMap:
+    if act < 1:
+        raise ValueError("Act must be at least 1.")
+    if steps_before_boss != len(STAGED_PILGRIMAGE_STAGES):
+        raise ValueError(
+            "The staged pilgrimage map currently requires exactly 9 steps before the boss."
+        )
+    if width < 2:
+        raise ValueError("Map width must be at least 2.")
+    if first_elite_depth < 1:
+        raise ValueError("First elite depth must be at least 1.")
+    if max_events < 0:
+        raise ValueError("Maximum event count must not be negative.")
+    if max_treasures < 0:
+        raise ValueError("Maximum treasure count must not be negative.")
+    if max_elites < 0:
+        raise ValueError("Maximum elite count must not be negative.")
+
+    nodes: dict[str, MapNode] = {}
+    layers: list[list[int]] = []
+    current_lanes = _choose_start_lanes(
+        rng,
+        width=width,
+    )
+    layers.append(current_lanes)
+    no_split_streak_by_lane: dict[int, int] = {
+        lane: 0
+        for lane in current_lanes
+    }
+    node_type_counts = {
+        "events": 0,
+        "treasures": 0,
+        "elites": 0,
+    }
+
+    for lane in current_lanes:
+        node = _make_staged_node(
+            rng=rng,
+            act=act,
+            depth=1,
+            lane=lane,
+            first_elite_depth=first_elite_depth,
+            node_type_counts=node_type_counts,
+            max_events=max_events,
+            max_treasures=max_treasures,
+            max_elites=max_elites,
+        )
+        nodes[node.id] = node
+
+    for depth in range(2, steps_before_boss + 1):
+        previous_lanes = current_lanes
+        outgoing_by_previous_lane: dict[int, set[int]] = {}
+
+        for previous_lane in previous_lanes:
+            outgoing_lanes = _choose_outgoing_lanes(
+                rng=rng,
+                lane=previous_lane,
+                width=width,
+                no_split_streak=no_split_streak_by_lane.get(previous_lane, 0),
+            )
+            outgoing_by_previous_lane[previous_lane] = outgoing_lanes
+
+        next_lanes = set().union(*outgoing_by_previous_lane.values())
+        next_lanes = _ensure_at_least_two_lanes(
+            rng=rng,
+            lanes=next_lanes,
+            width=width,
+        )
+        current_lanes = sorted(next_lanes)
+        layers.append(current_lanes)
+
+        for lane in current_lanes:
+            node = _make_staged_node(
+                rng=rng,
+                act=act,
+                depth=depth,
+                lane=lane,
+                first_elite_depth=first_elite_depth,
+                node_type_counts=node_type_counts,
+                max_events=max_events,
+                max_treasures=max_treasures,
+                max_elites=max_elites,
+            )
+            nodes[node.id] = node
+
+        for previous_lane, outgoing_lanes in outgoing_by_previous_lane.items():
+            previous_node_id = f"act_{act}_d{depth - 1:02d}_n{previous_lane:02d}"
+            next_node_ids = tuple(
+                f"act_{act}_d{depth:02d}_n{lane:02d}"
+                for lane in sorted(outgoing_lanes)
+                if lane in current_lanes
+            )
+            nodes[previous_node_id] = replace(
+                nodes[previous_node_id],
+                next_node_ids=next_node_ids,
+            )
+
+        new_no_split_streak_by_lane: dict[int, int] = {}
+        for lane in current_lanes:
+            predecessors = [
+                previous_lane
+                for previous_lane, outgoing_lanes in outgoing_by_previous_lane.items()
+                if lane in outgoing_lanes
+            ]
+            if len(predecessors) == 1:
+                predecessor = predecessors[0]
+                predecessor_outgoing_count = len(outgoing_by_previous_lane[predecessor])
+                if predecessor_outgoing_count == 1:
+                    new_no_split_streak_by_lane[lane] = (
+                        no_split_streak_by_lane.get(predecessor, 0) + 1
+                    )
+                else:
+                    new_no_split_streak_by_lane[lane] = 0
+            else:
+                new_no_split_streak_by_lane[lane] = 0
+
+        no_split_streak_by_lane = new_no_split_streak_by_lane
+
+    boss_depth = steps_before_boss + 1
+    boss_node = MapNode(
+        id=f"act_{act}_boss",
+        act=act,
+        depth=boss_depth,
+        node_type="boss",
+        encounter_difficulty="boss",
+        stage=STAGED_PILGRIMAGE_BOSS_STAGE,
     )
     nodes[boss_node.id] = boss_node
 

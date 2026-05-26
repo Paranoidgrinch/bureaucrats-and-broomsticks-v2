@@ -1,7 +1,7 @@
 {
   "id": "act_1_city",
   "act": 1,
-  "name": "Act I: The City Offices",
+  "name": "Act I: The Old City Offices",
   "character_class_files": [
     "data/classes/bureaucrat.json",
     "data/classes/witch_clerk.json",
@@ -61,7 +61,11 @@
   ],
   "map": {
     "steps_before_boss": 9,
-    "width": 4
+    "width": 4,
+    "layout": "staged_pilgrimage",
+    "max_events": 3,
+    "max_treasures": 1,
+    "max_elites": 2
   },
   "treasure": {
     "mimic_chance": 0.05,

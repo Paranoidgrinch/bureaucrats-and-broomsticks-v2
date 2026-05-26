@@ -14,9 +14,12 @@ class ActMapConfig(BaseModel):
     width: int = Field(gt=0)
     first_elite_depth: int = Field(default=6, ge=1)
     elite_weight_multiplier: float = Field(default=1.0, gt=0)
-    layout: Literal["standard", "boss_gauntlet"] = "standard"
+    layout: Literal["standard", "boss_gauntlet", "staged_pilgrimage"] = "standard"
     boss_count: int = Field(default=1, ge=1)
     boss_encounter_ids: list[str] = Field(default_factory=list)
+    max_events: int | None = Field(default=None, ge=0)
+    max_treasures: int | None = Field(default=None, ge=0)
+    max_elites: int | None = Field(default=None, ge=0)
 
 
 class ActTreasureConfig(BaseModel):

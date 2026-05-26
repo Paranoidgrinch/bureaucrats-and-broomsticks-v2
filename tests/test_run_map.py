@@ -4,8 +4,10 @@ import pytest
 
 from bab.run.map import (
     RunMap,
+    STAGED_PILGRIMAGE_STAGES,
     combat_difficulty_for_depth,
     generate_act_map,
+    generate_staged_pilgrimage_map,
 )
 
 
@@ -204,6 +206,66 @@ def test_combat_and_special_nodes_have_expected_payloads() -> None:
         if node.node_type in {"waiting_room", "treasure"}:
             assert node.encounter_difficulty is None
             assert node.event_type is None
+
+
+def test_staged_pilgrimage_map_assigns_expected_stage_sequence() -> None:
+    run_map = generate_staged_pilgrimage_map(
+        Random(1),
+        act=1,
+        steps_before_boss=9,
+        width=4,
+    )
+
+    for depth, expected_stage in STAGED_PILGRIMAGE_STAGES.items():
+        nodes_at_depth = [
+            node
+            for node in run_map.nodes.values()
+            if node.depth == depth
+        ]
+        assert nodes_at_depth
+        assert {node.stage for node in nodes_at_depth} == {expected_stage}
+
+    boss_node = run_map.get_node(run_map.boss_node_id)
+    assert boss_node.stage == "commissioner"
+
+
+def test_staged_pilgrimage_map_respects_global_node_caps() -> None:
+    for seed in range(100):
+        run_map = generate_staged_pilgrimage_map(
+            Random(seed),
+            act=1,
+            steps_before_boss=9,
+            width=4,
+            max_events=3,
+            max_treasures=1,
+            max_elites=2,
+        )
+        non_boss_nodes = [
+            node
+            for node in run_map.nodes.values()
+            if node.node_type != "boss"
+        ]
+        assert sum(node.node_type == "event" for node in non_boss_nodes) <= 3
+        assert sum(node.node_type == "treasure" for node in non_boss_nodes) <= 1
+        assert sum(node.node_type == "elite" for node in non_boss_nodes) <= 2
+
+
+def test_staged_pilgrimage_final_pre_boss_depth_is_waiting_room() -> None:
+    run_map = generate_staged_pilgrimage_map(
+        Random(3),
+        act=1,
+        steps_before_boss=9,
+        width=4,
+    )
+
+    final_nodes = [
+        node
+        for node in run_map.nodes.values()
+        if node.depth == 9
+    ]
+    assert final_nodes
+    assert {node.node_type for node in final_nodes} == {"waiting_room"}
+    assert all(node.next_node_ids == (run_map.boss_node_id,) for node in final_nodes)
 
 
 def test_combat_difficulty_for_depth_starts_easy_then_becomes_normal() -> None:

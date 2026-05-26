@@ -17,7 +17,7 @@ from bab.models import (
 )
 from bab.systems.gold import gold_reward_for_map_node
 from bab.systems.relics import apply_combat_start_relics, gold_reward_bonus
-from bab.run.map import MapNode, RunMap, generate_act_map, generate_boss_gauntlet_map
+from bab.run.map import MapNode, RunMap, generate_act_map, generate_boss_gauntlet_map, generate_staged_pilgrimage_map
 
 
 @dataclass
@@ -97,6 +97,9 @@ def create_new_run(
     map_layout: str = "standard",
     map_boss_count: int = 1,
     map_boss_encounter_ids: tuple[str, ...] | list[str] | None = None,
+    map_max_events: int | None = None,
+    map_max_treasures: int | None = None,
+    map_max_elites: int | None = None,
     mimic_chance: float = 0.20,
     treasure_mimic_encounter_id: str | None = "city_elite_02",
     waiting_room_heal_percent: int = 25,
@@ -130,6 +133,17 @@ def create_new_run(
             width=map_width,
             first_elite_depth=map_first_elite_depth,
             elite_weight_multiplier=map_elite_weight_multiplier,
+        )
+    elif map_layout == "staged_pilgrimage":
+        run_map = generate_staged_pilgrimage_map(
+            rng,
+            act=act,
+            steps_before_boss=map_steps_before_boss,
+            width=map_width,
+            first_elite_depth=map_first_elite_depth,
+            max_events=3 if map_max_events is None else map_max_events,
+            max_treasures=1 if map_max_treasures is None else map_max_treasures,
+            max_elites=2 if map_max_elites is None else map_max_elites,
         )
     else:
         raise ValueError(f"Unsupported map layout: {map_layout}")
