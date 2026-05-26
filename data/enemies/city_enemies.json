@@ -1306,7 +1306,10 @@
       "normal_balance_patch_v1",
       "counter",
       "doubt_intro",
-      "stage_counter"
+      "stage_counter",
+      "appeal",
+      "escalation",
+      "stage_appeal"
     ]
   },
   {
@@ -1366,7 +1369,10 @@
       "city",
       "sprite",
       "gold",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "appeal",
+      "escalation",
+      "stage_appeal"
     ]
   },
   {
@@ -1650,7 +1656,10 @@
       "city",
       "familiar",
       "tax",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "appeal",
+      "escalation",
+      "stage_appeal"
     ]
   },
   {
@@ -2125,7 +2134,10 @@
     "tags": [
       "city",
       "elite_component",
-      "bailiff"
+      "bailiff",
+      "appeal",
+      "escalation",
+      "stage_appeal"
     ]
   },
   {
@@ -2180,7 +2192,10 @@
     "tags": [
       "city",
       "elite_component",
-      "bailiff"
+      "bailiff",
+      "appeal",
+      "escalation",
+      "stage_appeal"
     ]
   },
   {
@@ -3739,6 +3754,186 @@
       "waiting",
       "fatigue_intro",
       "stage_delay"
+    ]
+  },
+  {
+    "id": "appeals_clerk",
+    "name": "Appeals Clerk",
+    "max_hp": 34,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "accept_the_complaint",
+        "name": "Accept the Complaint",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "escalate_to_review",
+        "name": "Escalate to Review",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stamp_the_rejection",
+        "name": "Stamp the Rejection",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure",
+      "stage_appeal"
+    ]
+  },
+  {
+    "id": "objection_sprite",
+    "name": "Objection Sprite",
+    "max_hp": 30,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "raise_objection",
+        "name": "Raise Objection",
+        "intent_type": "debuff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "cite_prior_delay",
+        "name": "Cite Prior Delay",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "sharp_little_argument",
+        "name": "Sharp Little Argument",
+        "intent_type": "attack",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure",
+      "stage_appeal"
+    ]
+  },
+  {
+    "id": "procedural_advocate",
+    "name": "Procedural Advocate",
+    "max_hp": 36,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "file_counter_argument",
+        "name": "File Counter-Argument",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "move_to_dismiss",
+        "name": "Move to Dismiss",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "strengthen_the_case",
+        "name": "Strengthen the Case",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure",
+      "stage_appeal"
     ]
   }
 ]

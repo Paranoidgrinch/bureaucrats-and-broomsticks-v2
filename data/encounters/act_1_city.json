@@ -266,7 +266,10 @@
     "tags": [
       "stage_seal",
       "seal",
-      "certification"
+      "certification",
+      "stage_appeal",
+      "appeal",
+      "escalation"
     ]
   },
   {
@@ -299,7 +302,12 @@
       "minor_tax_familiar",
       "permit_beggar"
     ],
-    "weight": 1
+    "weight": 1,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation"
+    ]
   },
   {
     "id": "city_normal_13",
@@ -726,6 +734,57 @@
       "delay",
       "waiting",
       "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_01",
+    "name": "Your Complaint Is Accepted",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "appeals_clerk"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_02",
+    "name": "An Objection Is Raised",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "objection_sprite"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_03",
+    "name": "The Procedure Argues Back",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "procedural_advocate"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "doubt_pressure",
+      "paperwork_pressure"
     ]
   }
 ]
