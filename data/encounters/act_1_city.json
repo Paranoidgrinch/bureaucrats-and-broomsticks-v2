@@ -32,7 +32,12 @@
     "enemies": [
       "clerkling_apprentice"
     ],
-    "weight": 3
+    "weight": 3,
+    "tags": [
+      "stage_counter",
+      "counter",
+      "doubt_intro"
+    ]
   },
   {
     "id": "city_normal_01",
@@ -194,7 +199,12 @@
     "enemies": [
       "permit_beggar"
     ],
-    "weight": 2
+    "weight": 3,
+    "tags": [
+      "stage_counter",
+      "counter",
+      "doubt_intro"
+    ]
   },
   {
     "id": "city_easy_08",
@@ -445,6 +455,51 @@
       "stage_queue",
       "queue",
       "panic_intro"
+    ]
+  },
+  {
+    "id": "city_easy_counter_01",
+    "name": "The Wrong Window",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "wrong_window_scribe"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_counter",
+      "counter",
+      "doubt_intro"
+    ]
+  },
+  {
+    "id": "city_easy_counter_02",
+    "name": "Not This Jurisdiction",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "jurisdiction_snail"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_counter",
+      "counter",
+      "doubt_intro"
+    ]
+  },
+  {
+    "id": "city_easy_counter_03",
+    "name": "A Matter for Another Desk",
+    "act": 1,
+    "difficulty": "easy",
+    "enemies": [
+      "jurisdictional_clerkling"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_counter",
+      "counter",
+      "doubt_intro"
     ]
   }
 ]

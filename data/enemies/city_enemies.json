@@ -538,7 +538,10 @@
     "tags": [
       "city",
       "bureaucracy",
-      "clerk"
+      "clerk",
+      "counter",
+      "doubt_intro",
+      "stage_counter"
     ]
   },
   {
@@ -1276,7 +1279,10 @@
       "city",
       "bureaucracy",
       "petitioner",
-      "normal_balance_patch_v1"
+      "normal_balance_patch_v1",
+      "counter",
+      "doubt_intro",
+      "stage_counter"
     ]
   },
   {
@@ -2811,6 +2817,177 @@
       "panic_intro",
       "beast",
       "stage_queue"
+    ]
+  },
+  {
+    "id": "wrong_window_scribe",
+    "name": "Wrong-Window Scribe",
+    "max_hp": 18,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "ask_for_form_you_do_not_have",
+        "name": "Ask for a Form You Do Not Have",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "tap_the_counter",
+        "name": "Tap the Counter",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "send_you_next_door",
+        "name": "Send You Next Door",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "clerk",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "jurisdiction_snail",
+    "name": "Jurisdiction Snail",
+    "max_hp": 22,
+    "intent_pattern": "weighted_random",
+    "intents": [
+      {
+        "id": "declare_it_not_my_desk",
+        "name": "Declare It Not My Desk",
+        "intent_type": "debuff",
+        "weight": 3,
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "retreat_under_counter",
+        "name": "Retreat Under the Counter",
+        "intent_type": "block",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "slow_rubber_stamp",
+        "name": "Slow Rubber Stamp",
+        "intent_type": "mixed",
+        "weight": 2,
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "beast",
+      "stage_counter"
+    ]
+  },
+  {
+    "id": "jurisdictional_clerkling",
+    "name": "Jurisdictional Clerkling",
+    "max_hp": 20,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "check_the_wrong_ledger",
+        "name": "Check the Wrong Ledger",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "paper_cut",
+        "name": "Paper Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "provisional_refusal",
+        "name": "Provisional Refusal",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "counter",
+      "doubt_intro",
+      "clerk",
+      "stage_counter"
     ]
   }
 ]
