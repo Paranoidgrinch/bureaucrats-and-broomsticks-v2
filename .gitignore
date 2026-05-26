@@ -49,3 +49,6 @@ runs/run_heuristic_v2_character_benchmark.py
 # Python packaging metadata
 *.egg-info/
 src/*.egg-info/
+
+# Local staged-pilgrimage smoke outputs
+runs/act1_v2_bureaucrat_random_*/
