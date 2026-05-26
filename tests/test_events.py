@@ -117,3 +117,76 @@ def test_choose_random_event_raises_error_when_filters_match_nothing() -> None:
             act=2,
             event_type="deck",
         )
+
+
+def test_choose_random_event_prefers_matching_stage_tag() -> None:
+    untagged = make_event("untagged_event", event_type="narrative")
+    tagged = EventDefinition.model_validate(
+        {
+            "id": "queue_event",
+            "name": "Queue Event",
+            "act": 1,
+            "event_type": "narrative",
+            "weight": 1,
+            "text": "A queue forms.",
+            "choices": [
+                {
+                    "id": "wait",
+                    "text": "Wait.",
+                    "result_text": "You wait.",
+                    "effects": [],
+                }
+            ],
+            "tags": ["stage_queue"],
+        }
+    )
+    event_database = {
+        untagged.id: untagged,
+        tagged.id: tagged,
+    }
+
+    chosen = choose_random_event(
+        event_database,
+        Random(1),
+        act=1,
+        event_type="narrative",
+        stage="queue",
+    )
+
+    assert chosen.id == "queue_event"
+
+
+def test_choose_random_event_falls_back_when_stage_has_no_matches() -> None:
+    event = make_event("normal_event", event_type="deck")
+    event_database = {
+        event.id: event,
+    }
+
+    chosen = choose_random_event(
+        event_database,
+        Random(1),
+        act=1,
+        event_type="deck",
+        stage="queue",
+    )
+
+    assert chosen.id == "normal_event"
+
+
+def test_choose_random_event_respects_excluded_event_ids_when_possible() -> None:
+    old_event = make_event("old_event", event_type="narrative")
+    new_event = make_event("new_event", event_type="narrative")
+    event_database = {
+        old_event.id: old_event,
+        new_event.id: new_event,
+    }
+
+    chosen = choose_random_event(
+        event_database,
+        Random(1),
+        act=1,
+        event_type="narrative",
+        excluded_event_ids={"old_event"},
+    )
+
+    assert chosen.id == "new_event"

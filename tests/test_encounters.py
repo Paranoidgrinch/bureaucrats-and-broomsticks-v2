@@ -21,6 +21,7 @@ def make_encounter(
             "difficulty": difficulty,
             "enemies": ["test_enemy"],
             "weight": weight,
+            "tags": [],
         }
     )
 
@@ -108,3 +109,49 @@ def test_choose_random_encounter_raises_error_when_filters_match_nothing() -> No
             act=2,
             difficulty="boss",
         )
+
+
+def test_choose_random_encounter_prefers_matching_stage_tag() -> None:
+    untagged = make_encounter("untagged_counter", difficulty="easy")
+    tagged = EncounterDefinition.model_validate(
+        {
+            "id": "queue_encounter",
+            "name": "Queue Encounter",
+            "act": 1,
+            "difficulty": "easy",
+            "enemies": ["test_enemy"],
+            "weight": 1,
+            "tags": ["stage_queue"],
+        }
+    )
+    encounter_database = {
+        untagged.id: untagged,
+        tagged.id: tagged,
+    }
+
+    chosen = choose_random_encounter(
+        encounter_database,
+        Random(1),
+        act=1,
+        difficulty="easy",
+        stage="queue",
+    )
+
+    assert chosen.id == "queue_encounter"
+
+
+def test_choose_random_encounter_falls_back_when_stage_has_no_matches() -> None:
+    encounter = make_encounter("normal_encounter", difficulty="normal")
+    encounter_database = {
+        encounter.id: encounter,
+    }
+
+    chosen = choose_random_encounter(
+        encounter_database,
+        Random(1),
+        act=1,
+        difficulty="normal",
+        stage="queue",
+    )
+
+    assert chosen.id == "normal_encounter"

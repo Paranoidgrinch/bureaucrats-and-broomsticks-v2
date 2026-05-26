@@ -41,7 +41,11 @@ def resolve_event_node(run_state: RunState, node: MapNode) -> None:
         run_state.rng,
         act=run_state.act,
         event_type=node.event_type,
+        stage=node.stage,
+        excluded_event_ids=set(run_state.seen_event_ids),
     )
+    if event.id not in run_state.seen_event_ids:
+        run_state.seen_event_ids.append(event.id)
 
     print_event(event)
     choice = choose_event_choice(event)

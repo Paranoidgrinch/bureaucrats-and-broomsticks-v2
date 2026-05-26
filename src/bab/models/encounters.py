@@ -16,3 +16,4 @@ class EncounterDefinition(BaseModel):
     difficulty: EncounterDifficulty
     enemies: list[str]
     weight: int = Field(default=1, gt=0)
+    tags: list[str] = Field(default_factory=list)

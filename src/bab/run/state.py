@@ -253,6 +253,7 @@ def create_combat_state_for_next_encounter(
             run_state.rng,
             act=run_state.act,
             difficulty=encounter_difficulty,
+            stage=getattr(current_node, "stage", None),
         )
 
     enemies = create_enemies_for_encounter(

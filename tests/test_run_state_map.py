@@ -67,6 +67,7 @@ def make_encounter_definition(
     encounter_id: str,
     *,
     difficulty: str,
+    tags: list[str] | None = None,
 ) -> EncounterDefinition:
     return EncounterDefinition.model_validate(
         {
@@ -76,6 +77,7 @@ def make_encounter_definition(
             "difficulty": difficulty,
             "enemies": ["test_enemy"],
             "weight": 1,
+            "tags": tags or [],
         }
     )
 
@@ -245,3 +247,41 @@ def test_create_combat_state_rejects_non_combat_current_node() -> None:
 
     with pytest.raises(ValueError, match="does not contain a combat encounter"):
         create_combat_state_for_next_encounter(run_state)
+
+
+def test_create_combat_state_prefers_current_map_node_stage() -> None:
+    rubber_stamp = make_card("rubber_stamp")
+    official_delay = make_card("official_delay")
+    card_database = {
+        rubber_stamp.id: rubber_stamp,
+        official_delay.id: official_delay,
+    }
+    enemy = make_enemy_definition()
+    untagged = make_encounter_definition("untagged_easy", difficulty="easy")
+    queue_encounter = make_encounter_definition(
+        "queue_easy",
+        difficulty="easy",
+        tags=["stage_queue"],
+    )
+    run_state = create_new_run(
+        character_class=make_character_class(),
+        card_database=card_database,
+        enemy_database={enemy.id: enemy},
+        encounter_database={
+            untagged.id: untagged,
+            queue_encounter.id: queue_encounter,
+        },
+        status_database={},
+        rng=Random(1),
+        max_fights=3,
+        map_steps_before_boss=9,
+        map_width=2,
+        map_layout="staged_pilgrimage",
+    )
+    start_node_id = run_state.run_map.start_node_ids[0]
+    enter_map_node(run_state, start_node_id)
+
+    combat_state = create_combat_state_for_next_encounter(run_state)
+
+    assert combat_state.encounter_id == "queue_easy"
+    assert "Encounter chosen: Queue Easy." in combat_state.log
