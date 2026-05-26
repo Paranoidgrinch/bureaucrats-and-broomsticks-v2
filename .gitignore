@@ -45,3 +45,7 @@ runs/run_heuristic_v2_character_benchmark.py
 !runs/README.md
 !runs/good_runners/
 !runs/good_runners/**
+
+# Python packaging metadata
+*.egg-info/
+src/*.egg-info/
