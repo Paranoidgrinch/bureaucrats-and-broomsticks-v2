@@ -49,6 +49,13 @@ from bab.systems.relics import (
     shop_price_discount_percent,
 )
 from bab.systems.rewards import choose_card_rewards, choose_epic_card_rewards
+from bab.systems.event_effects import (
+    apply_event_add_card_to_deck,
+    apply_event_gain_gold,
+    apply_event_heal_percent_max_hp,
+    apply_event_lose_gold,
+    apply_event_lose_hp,
+)
 from bab.systems.shop import (
     DEFAULT_SHOP_CARD_OFFER_COUNT,
     DEFAULT_SHOP_RELIC_OFFER_COUNT,
@@ -503,6 +510,26 @@ def simulate_event_node(
             percent = effect.amount or 0
             loss = ceil(run_state.character_class.max_hp * percent / 100)
             run_state.current_hp = max(1, run_state.current_hp - loss)
+            continue
+
+        if effect.type == "lose_hp":
+            apply_event_lose_hp(run_state, effect)
+            continue
+
+        if effect.type == "gain_gold":
+            apply_event_gain_gold(run_state, effect)
+            continue
+
+        if effect.type == "lose_gold":
+            apply_event_lose_gold(run_state, effect)
+            continue
+
+        if effect.type == "heal_percent_max_hp":
+            apply_event_heal_percent_max_hp(run_state, effect)
+            continue
+
+        if effect.type == "add_card_to_deck":
+            apply_event_add_card_to_deck(run_state, effect)
             continue
 
         if effect.type == "gain_max_hp":

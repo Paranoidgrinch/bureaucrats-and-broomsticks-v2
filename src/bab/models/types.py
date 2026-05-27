@@ -105,6 +105,11 @@ EventEffectType = Literal[
     "upgrade_card",
     "remove_card",
     "lose_percent_max_hp",
+    "add_card_to_deck",
+    "heal_percent_max_hp",
+    "lose_gold",
+    "gain_gold",
+    "lose_hp",
     "gain_max_hp",
     "open_shop",
 ]
