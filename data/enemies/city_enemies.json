@@ -1115,12 +1115,42 @@
   {
     "id": "deputy_undersecretary",
     "name": "The Deputy Undersecretary",
-    "max_hp": 78,
+    "max_hp": 118,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "read_the_minutes_in_full",
-        "name": "Read the Minutes in Full",
+        "id": "adjourn_the_matter",
+        "name": "Adjourn the Matter",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "circulate_the_memo",
+        "name": "Circulate the Memo",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "come_back_later",
+        "name": "Come Back Later",
         "intent_type": "debuff",
         "actions": [
           {
@@ -1132,50 +1162,27 @@
         ]
       },
       {
-        "id": "adjourn_without_decision",
-        "name": "Adjourn Without Decision",
-        "intent_type": "mixed",
+        "id": "delay_has_costs",
+        "name": "Delay Has Costs",
+        "intent_type": "attack",
         "actions": [
           {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 9
-          },
-          {
-            "type": "apply_status",
+            "type": "damage_per_status",
             "target": "player",
             "status": "fatigue",
-            "amount": 1
+            "amount_per_stack": 3
           }
         ]
       },
       {
-        "id": "request_further_clarification",
-        "name": "Request Further Clarification",
+        "id": "deputys_decision",
+        "name": "Deputy's Decision",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 8
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "doubt",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "schedule_another_hearing",
-        "name": "Schedule Another Hearing",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 7
+            "amount": 14
           },
           {
             "type": "apply_status",
@@ -1190,6 +1197,8 @@
       "city",
       "boss",
       "deputy",
+      "undersecretary",
+      "delay",
       "fatigue",
       "boss_fatigue"
     ]
@@ -2346,48 +2355,17 @@
   {
     "id": "queue_commissioner",
     "name": "The Queue Commissioner",
-    "max_hp": 72,
+    "max_hp": 112,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "call_number_never_issued",
-        "name": "Call Number Never Issued",
-        "intent_type": "debuff",
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "panic",
-            "amount": 2
-          }
-        ]
-      },
-      {
-        "id": "close_another_window",
-        "name": "Close Another Window",
+        "id": "call_the_wrong_number",
+        "name": "Call the Wrong Number",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 9
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "panic",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "everyone_moves_back_one_place",
-        "name": "Everyone Moves Back One Place",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
             "amount": 8
           },
           {
@@ -2395,6 +2373,18 @@
             "target": "player",
             "status": "panic",
             "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "reorder_the_line",
+        "name": "Reorder the Line",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
           }
         ]
       },
@@ -2404,151 +2394,40 @@
         "intent_type": "mixed",
         "actions": [
           {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
             "type": "apply_status",
+            "target": "player",
+            "status": "panic",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "crowd_pressure",
+        "name": "Crowd Pressure",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "damage_per_status",
             "target": "player",
             "status": "panic",
-            "amount": 2
-          },
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "boss",
-      "queue",
-      "panic",
-      "boss_panic"
-    ]
-  },
-  {
-    "id": "lord_sealkeeper",
-    "name": "The Lord Sealkeeper",
-    "max_hp": 84,
-    "intent_pattern": "cycle",
-    "intents": [
-      {
-        "id": "raise_the_great_seal",
-        "name": "Raise the Great Seal",
-        "intent_type": "block",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 14
+            "amount_per_stack": 3
           }
         ]
       },
       {
-        "id": "certify_the_barrier",
-        "name": "Certify the Barrier",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 10
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "paperwork",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "waxen_authority",
-        "name": "Waxen Authority",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 8
-          },
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "stamped_rejection",
-        "name": "Stamped Rejection",
-        "intent_type": "attack",
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 12
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "boss",
-      "seal",
-      "block",
-      "boss_block"
-    ]
-  },
-  {
-    "id": "municipal_dragon",
-    "name": "The Municipal Dragon",
-    "max_hp": 88,
-    "intent_pattern": "cycle",
-    "intents": [
-      {
-        "id": "ancient_civic_appetite",
-        "name": "Ancient Civic Appetite",
-        "intent_type": "buff",
-        "actions": [
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "tax_fire_breath",
-        "name": "Tax-Fire Breath",
-        "intent_type": "attack",
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 11
-          }
-        ]
-      },
-      {
-        "id": "hoard_of_fees",
-        "name": "Hoard of Fees",
-        "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 8
-          },
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "by_ancient_right",
-        "name": "By Ancient Right",
+        "id": "close_the_counter",
+        "name": "Close the Counter",
         "intent_type": "attack",
         "actions": [
           {
@@ -2562,7 +2441,182 @@
     "tags": [
       "city",
       "boss",
+      "queue",
+      "commissioner",
+      "panic",
+      "boss_panic"
+    ]
+  },
+  {
+    "id": "lord_sealkeeper",
+    "name": "The Lord Sealkeeper",
+    "max_hp": 124,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "press_the_great_seal",
+        "name": "Press the Great Seal",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "waxen_authority",
+        "name": "Waxen Authority",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 18
+          }
+        ]
+      },
+      {
+        "id": "seal_the_record",
+        "name": "Seal the Record",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "mallet_of_validity",
+        "name": "Mallet of Validity",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 13
+          }
+        ]
+      },
+      {
+        "id": "unbreakable_certification",
+        "name": "Unbreakable Certification",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 22
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "boss",
+      "seal",
+      "sealkeeper",
+      "block",
+      "boss_block"
+    ]
+  },
+  {
+    "id": "municipal_dragon",
+    "name": "The Municipal Dragon",
+    "max_hp": 132,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "civic_claw",
+        "name": "Civic Claw",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "hoard_of_permits",
+        "name": "Hoard of Permits",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "ordinance_breath",
+        "name": "Ordinance Breath",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "old_city_hunger",
+        "name": "Old City Hunger",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "dragons_assessment",
+        "name": "Dragon's Assessment",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 17
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "boss",
       "dragon",
+      "municipal",
       "strength",
       "boss_strength"
     ]
@@ -2570,26 +2624,49 @@
   {
     "id": "living_charter",
     "name": "The Living Charter",
-    "max_hp": 82,
+    "max_hp": 120,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "addendum_crawls_forth",
-        "name": "Addendum Crawls Forth",
-        "intent_type": "debuff",
+        "id": "article_writes_itself",
+        "name": "Article Writes Itself",
+        "intent_type": "mixed",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
           {
             "type": "apply_status",
             "target": "player",
             "status": "paperwork",
-            "amount": 2
+            "amount": 1
           }
         ]
       },
       {
-        "id": "clause_refers_to_clause",
-        "name": "Clause Refers to Clause",
+        "id": "ambiguous_clause",
+        "name": "Ambiguous Clause",
         "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "amend_the_player",
+        "name": "Amend the Player",
+        "intent_type": "debuff",
         "actions": [
           {
             "type": "apply_status",
@@ -2606,32 +2683,33 @@
         ]
       },
       {
-        "id": "binding_interpretation",
-        "name": "Binding Interpretation",
-        "intent_type": "mixed",
+        "id": "read_against_you",
+        "name": "Read Against You",
+        "intent_type": "attack",
         "actions": [
           {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 9
-          },
-          {
-            "type": "apply_status",
+            "type": "damage_per_status",
             "target": "player",
             "status": "paperwork",
-            "amount": 1
+            "amount_per_stack": 3
           }
         ]
       },
       {
-        "id": "the_text_becomes_law",
-        "name": "The Text Becomes Law",
-        "intent_type": "attack",
+        "id": "contradictory_rights",
+        "name": "Contradictory Rights",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
             "amount": 12
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
           }
         ]
       }
