@@ -107,6 +107,8 @@ EventEffectType = Literal[
     "lose_percent_max_hp",
     "add_card_to_deck",
     "gain_relic",
+    "transform_card",
+    "duplicate_card",
     "heal_percent_max_hp",
     "lose_gold",
     "gain_gold",

@@ -51,6 +51,8 @@ from bab.systems.relics import (
 from bab.systems.rewards import choose_card_rewards, choose_epic_card_rewards
 from bab.systems.event_effects import (
     apply_event_add_card_to_deck,
+    apply_event_transform_card,
+    apply_event_duplicate_card,
     apply_event_gain_gold,
     apply_event_gain_relic,
     apply_event_heal_percent_max_hp,
@@ -531,6 +533,14 @@ def simulate_event_node(
 
         if effect.type == "add_card_to_deck":
             apply_event_add_card_to_deck(run_state, effect)
+            continue
+
+        if effect.type == "duplicate_card":
+            apply_event_duplicate_card(run_state, effect)
+            continue
+
+        if effect.type == "transform_card":
+            apply_event_transform_card(run_state, effect)
             continue
 
         if effect.type == "gain_relic":

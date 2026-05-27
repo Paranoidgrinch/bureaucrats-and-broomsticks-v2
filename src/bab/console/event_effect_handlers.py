@@ -16,6 +16,8 @@ from bab.models import EventEffect
 from bab.run.state import RunState
 from bab.systems.event_effects import (
     apply_event_add_card_to_deck,
+    apply_event_transform_card,
+    apply_event_duplicate_card,
     apply_event_gain_gold,
     apply_event_gain_relic,
     apply_event_heal_percent_max_hp,
@@ -93,6 +95,20 @@ def handle_add_card_to_deck(run_state: RunState, effect: EventEffect) -> None:
 
 
 
+
+def handle_duplicate_card(run_state: RunState, effect: EventEffect) -> None:
+    duplicated_cards = apply_event_duplicate_card(run_state, effect)
+    for card in duplicated_cards:
+        console.print(f"[green]Duplicated {card.name}.[/green]")
+
+
+def handle_transform_card(run_state: RunState, effect: EventEffect) -> None:
+    removed_card, replacement = apply_event_transform_card(run_state, effect)
+    console.print(
+        f"[green]Transformed {removed_card.name} into {replacement.name}.[/green]"
+    )
+
+
 def handle_gain_relic(run_state: RunState, effect: EventEffect) -> None:
     relic = apply_event_gain_relic(run_state, effect)
     console.print(f"[magenta]Gained relic: {relic.name}.[/magenta]")
@@ -127,6 +143,8 @@ CONSOLE_EVENT_EFFECT_HANDLERS: Mapping[str, ConsoleEventEffectHandler] = {
     "heal_percent_max_hp": handle_heal_percent_max_hp,
     "add_card_to_deck": handle_add_card_to_deck,
     "gain_relic": handle_gain_relic,
+    "duplicate_card": handle_duplicate_card,
+    "transform_card": handle_transform_card,
     "gain_max_hp": handle_gain_max_hp,
     "remove_card": handle_remove_card,
     "open_shop": handle_open_shop,

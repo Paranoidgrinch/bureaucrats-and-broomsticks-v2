@@ -6,6 +6,8 @@ from math import ceil
 
 from bab.models import Card, EventEffect, RelicDefinition
 from bab.run.state import RunState
+from bab.systems.card_removal import removable_card_indices, remove_card_from_deck
+from bab.systems.rewards import choose_card_rewards
 from bab.systems.relics import apply_relic_pickup_effects_to_run_state
 
 
@@ -139,3 +141,62 @@ def apply_event_gain_relic(run_state: RunState, effect: EventEffect) -> RelicDef
     run_state.relics.append(relic)
     apply_relic_pickup_effects_to_run_state(run_state, relic)
     return relic
+
+
+
+def event_card_indices(run_state: RunState, effect: EventEffect) -> list[int]:
+    return [
+        index
+        for index, card in enumerate(run_state.run_deck)
+        if (effect.card_id is None or card.id == effect.card_id)
+        and (effect.tag is None or effect.tag in card.tags)
+    ]
+
+
+def event_removable_card_indices(run_state: RunState, effect: EventEffect) -> list[int]:
+    return removable_card_indices(
+        run_state.run_deck,
+        card_id=effect.card_id,
+        tag=effect.tag,
+    )
+
+
+def apply_event_duplicate_card(
+    run_state: RunState,
+    effect: EventEffect,
+) -> list[Card]:
+    indices = event_card_indices(run_state, effect)
+    if not indices:
+        raise ValueError("No cards available to duplicate for event effect.")
+
+    count = max(1, effect_amount(effect, default=1))
+    duplicated_cards: list[Card] = []
+
+    for _ in range(count):
+        deck_index = run_state.rng.choice(indices)
+        card = run_state.run_deck[deck_index]
+        run_state.run_deck.append(card)
+        duplicated_cards.append(card)
+
+    return duplicated_cards
+
+
+def apply_event_transform_card(
+    run_state: RunState,
+    effect: EventEffect,
+) -> tuple[Card, Card]:
+    indices = event_removable_card_indices(run_state, effect)
+    if not indices:
+        raise ValueError("No removable cards available to transform for event effect.")
+
+    deck_index = run_state.rng.choice(indices)
+    removed_card = remove_card_from_deck(run_state.run_deck, deck_index)
+    replacement = choose_card_rewards(
+        run_state.card_database,
+        run_state.rng,
+        count=1,
+        card_class=run_state.character_class.id,
+        act=run_state.act,
+    )[0]
+    run_state.run_deck.append(replacement)
+    return removed_card, replacement
