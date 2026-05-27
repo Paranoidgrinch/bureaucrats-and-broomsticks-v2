@@ -200,3 +200,62 @@ def apply_event_transform_card(
     )[0]
     run_state.run_deck.append(replacement)
     return removed_card, replacement
+
+
+
+def _positive_event_amount(effect: EventEffect) -> int:
+    return max(0, effect_amount(effect, default=0))
+
+
+def apply_event_next_combat_player_strength(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_player_strength += amount
+    return amount
+
+
+def apply_event_next_combat_player_panic(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_player_panic += amount
+    return amount
+
+
+def apply_event_next_combat_player_fatigue(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_player_fatigue += amount
+    return amount
+
+
+def apply_event_next_combat_enemy_strength(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_enemy_strength += amount
+    return amount
+
+
+def apply_event_next_combat_enemy_hp_loss_percent(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_enemy_hp_loss_percent += amount
+    return amount
+
+
+def apply_event_next_combat_card_reward_bonus(
+    run_state: RunState,
+    effect: EventEffect,
+) -> int:
+    amount = _positive_event_amount(effect)
+    run_state.next_combat_card_reward_bonus += amount
+    return amount

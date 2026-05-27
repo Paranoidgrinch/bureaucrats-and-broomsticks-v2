@@ -18,7 +18,13 @@ from bab.systems.upgrades import upgrade_card_in_deck, upgradeable_card_indices
 
 
 def offer_card_reward(run_state: RunState) -> None:
-    reward_count = run_state.card_reward_choices + card_reward_count_bonus(run_state.relics)
+    pending_bonus = run_state.pending_card_reward_bonus_choices
+    run_state.pending_card_reward_bonus_choices = 0
+    reward_count = (
+        run_state.card_reward_choices
+        + card_reward_count_bonus(run_state.relics)
+        + pending_bonus
+    )
     rewards = choose_card_rewards(
         run_state.card_database,
         run_state.rng,

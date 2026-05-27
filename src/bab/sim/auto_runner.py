@@ -58,6 +58,12 @@ from bab.systems.event_effects import (
     apply_event_heal_percent_max_hp,
     apply_event_lose_gold,
     apply_event_lose_hp,
+    apply_event_next_combat_player_strength,
+    apply_event_next_combat_player_panic,
+    apply_event_next_combat_player_fatigue,
+    apply_event_next_combat_enemy_strength,
+    apply_event_next_combat_enemy_hp_loss_percent,
+    apply_event_next_combat_card_reward_bonus,
 )
 from bab.systems.shop import (
     DEFAULT_SHOP_CARD_OFFER_COUNT,
@@ -541,6 +547,30 @@ def simulate_event_node(
 
         if effect.type == "transform_card":
             apply_event_transform_card(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_player_strength":
+            apply_event_next_combat_player_strength(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_player_panic":
+            apply_event_next_combat_player_panic(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_player_fatigue":
+            apply_event_next_combat_player_fatigue(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_enemy_strength":
+            apply_event_next_combat_enemy_strength(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_enemy_hp_loss_percent":
+            apply_event_next_combat_enemy_hp_loss_percent(run_state, effect)
+            continue
+
+        if effect.type == "next_combat_card_reward_bonus":
+            apply_event_next_combat_card_reward_bonus(run_state, effect)
             continue
 
         if effect.type == "gain_relic":

@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from math import ceil
 from random import Random
 
 from bab.combat.state import CombatState, Combatant
@@ -50,6 +51,13 @@ class RunState:
     shop_relic_offer_count: int = 3
     shop_price_multiplier: float = 1.0
     event_combat_chance: float = 0.0
+    next_combat_player_strength: int = 0
+    next_combat_player_panic: int = 0
+    next_combat_player_fatigue: int = 0
+    next_combat_enemy_strength: int = 0
+    next_combat_enemy_hp_loss_percent: int = 0
+    next_combat_card_reward_bonus: int = 0
+    pending_card_reward_bonus_choices: int = 0
 
     def is_complete(self) -> bool:
         return (
@@ -285,6 +293,7 @@ def create_combat_state_for_next_encounter(
     state.encounter_name = encounter.name
     state.log.append(f"Encounter chosen: {encounter.name}.")
     apply_combat_start_relics(state, run_state.relics)
+    apply_next_combat_modifiers(run_state, state)
     shuffle_draw_pile(state, run_state.rng)
 
     return state
@@ -363,8 +372,85 @@ def create_combat_state_for_hidden_event_node(
     state.encounter_name = encounter.name
     state.log.append(f"Hidden event combat: {encounter.name}.")
     apply_combat_start_relics(state, run_state.relics)
+    apply_next_combat_modifiers(run_state, state)
     shuffle_draw_pile(state, run_state.rng)
     return state
+
+
+
+def _clamped_percent_loss(percent: int) -> int:
+    return max(0, min(99, percent))
+
+
+def apply_next_combat_modifiers(
+    run_state: RunState,
+    combat_state: CombatState,
+) -> None:
+    if run_state.next_combat_player_strength > 0:
+        combat_state.player.apply_status(
+            "strength",
+            run_state.next_combat_player_strength,
+        )
+        combat_state.log.append(
+            f"Event modifier: Player starts with "
+            f"{run_state.next_combat_player_strength} Strength."
+        )
+
+    if run_state.next_combat_player_panic > 0:
+        combat_state.player.apply_status(
+            "panic",
+            run_state.next_combat_player_panic,
+        )
+        combat_state.log.append(
+            f"Event modifier: Player starts with "
+            f"{run_state.next_combat_player_panic} Panic."
+        )
+
+    if run_state.next_combat_player_fatigue > 0:
+        combat_state.player.apply_status(
+            "fatigue",
+            run_state.next_combat_player_fatigue,
+        )
+        combat_state.log.append(
+            f"Event modifier: Player starts with "
+            f"{run_state.next_combat_player_fatigue} Fatigue."
+        )
+
+    if run_state.next_combat_enemy_strength > 0:
+        for enemy in combat_state.living_enemies():
+            enemy.apply_status(
+                "strength",
+                run_state.next_combat_enemy_strength,
+            )
+        combat_state.log.append(
+            f"Event modifier: Enemies start with "
+            f"{run_state.next_combat_enemy_strength} Strength."
+        )
+
+    if run_state.next_combat_enemy_hp_loss_percent > 0:
+        percent = _clamped_percent_loss(run_state.next_combat_enemy_hp_loss_percent)
+        for enemy in combat_state.living_enemies():
+            new_hp = max(1, ceil(enemy.max_hp * (100 - percent) / 100))
+            enemy.hp = min(enemy.hp, new_hp)
+        combat_state.log.append(
+            f"Event modifier: Enemies start with {percent}% less HP."
+        )
+
+    if run_state.next_combat_card_reward_bonus > 0:
+        run_state.pending_card_reward_bonus_choices += (
+            run_state.next_combat_card_reward_bonus
+        )
+        combat_state.log.append(
+            f"Event modifier: Next card reward has +"
+            f"{run_state.next_combat_card_reward_bonus} choice(s)."
+        )
+
+    run_state.next_combat_player_strength = 0
+    run_state.next_combat_player_panic = 0
+    run_state.next_combat_player_fatigue = 0
+    run_state.next_combat_enemy_strength = 0
+    run_state.next_combat_enemy_hp_loss_percent = 0
+    run_state.next_combat_card_reward_bonus = 0
 
 
 def finish_victorious_combat(

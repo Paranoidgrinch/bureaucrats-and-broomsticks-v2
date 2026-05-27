@@ -23,6 +23,12 @@ from bab.systems.event_effects import (
     apply_event_heal_percent_max_hp,
     apply_event_lose_gold,
     apply_event_lose_hp,
+    apply_event_next_combat_player_strength,
+    apply_event_next_combat_player_panic,
+    apply_event_next_combat_player_fatigue,
+    apply_event_next_combat_enemy_strength,
+    apply_event_next_combat_enemy_hp_loss_percent,
+    apply_event_next_combat_card_reward_bonus,
 )
 
 ConsoleEventEffectHandler = Callable[[RunState, EventEffect], None]
@@ -109,6 +115,37 @@ def handle_transform_card(run_state: RunState, effect: EventEffect) -> None:
     )
 
 
+
+def handle_next_combat_player_strength(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_player_strength(run_state, effect)
+    console.print(f"[cyan]Next combat: you start with {amount} Strength.[/cyan]")
+
+
+def handle_next_combat_player_panic(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_player_panic(run_state, effect)
+    console.print(f"[cyan]Next combat: you start with {amount} Panic.[/cyan]")
+
+
+def handle_next_combat_player_fatigue(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_player_fatigue(run_state, effect)
+    console.print(f"[cyan]Next combat: you start with {amount} Fatigue.[/cyan]")
+
+
+def handle_next_combat_enemy_strength(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_enemy_strength(run_state, effect)
+    console.print(f"[cyan]Next combat: enemies start with {amount} Strength.[/cyan]")
+
+
+def handle_next_combat_enemy_hp_loss_percent(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_enemy_hp_loss_percent(run_state, effect)
+    console.print(f"[cyan]Next combat: enemies start with {amount}% less HP.[/cyan]")
+
+
+def handle_next_combat_card_reward_bonus(run_state: RunState, effect: EventEffect) -> None:
+    amount = apply_event_next_combat_card_reward_bonus(run_state, effect)
+    console.print(f"[cyan]Next combat reward: +{amount} card choice(s).[/cyan]")
+
+
 def handle_gain_relic(run_state: RunState, effect: EventEffect) -> None:
     relic = apply_event_gain_relic(run_state, effect)
     console.print(f"[magenta]Gained relic: {relic.name}.[/magenta]")
@@ -145,6 +182,12 @@ CONSOLE_EVENT_EFFECT_HANDLERS: Mapping[str, ConsoleEventEffectHandler] = {
     "gain_relic": handle_gain_relic,
     "duplicate_card": handle_duplicate_card,
     "transform_card": handle_transform_card,
+    "next_combat_card_reward_bonus": handle_next_combat_card_reward_bonus,
+    "next_combat_enemy_hp_loss_percent": handle_next_combat_enemy_hp_loss_percent,
+    "next_combat_enemy_strength": handle_next_combat_enemy_strength,
+    "next_combat_player_fatigue": handle_next_combat_player_fatigue,
+    "next_combat_player_panic": handle_next_combat_player_panic,
+    "next_combat_player_strength": handle_next_combat_player_strength,
     "gain_max_hp": handle_gain_max_hp,
     "remove_card": handle_remove_card,
     "open_shop": handle_open_shop,
