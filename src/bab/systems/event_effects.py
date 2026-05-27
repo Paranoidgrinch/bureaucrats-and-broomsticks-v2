@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from math import ceil
 
-from bab.models import Card, EventEffect
+from bab.models import Card, EventEffect, RelicDefinition
 from bab.run.state import RunState
+from bab.systems.relics import apply_relic_pickup_effects_to_run_state
 
 
 def effect_amount(effect: EventEffect, default: int = 1) -> int:
@@ -77,3 +78,64 @@ def apply_event_add_card_to_deck(
     ]
     run_state.run_deck.extend(added_cards)
     return added_cards
+
+
+
+def event_relic_is_allowed(
+    relic: RelicDefinition,
+    run_state: RunState,
+) -> bool:
+    """Return whether an event may grant this relic in the current Act-1 pool.
+
+    Event relics are intentionally limited to general act relics loaded by the
+    current catalog and relics explicitly allowed for the current class.
+    """
+
+    if relic.rarity == "boss":
+        return False
+
+    owned_ids = {
+        owned_relic.id
+        for owned_relic in run_state.relics
+    }
+    if relic.id in owned_ids:
+        return False
+
+    if relic.allowed_classes:
+        return run_state.character_class.id in relic.allowed_classes
+
+    return True
+
+
+def eligible_event_relics(run_state: RunState) -> list[RelicDefinition]:
+    return sorted(
+        [
+            relic
+            for relic in run_state.relic_database.values()
+            if event_relic_is_allowed(relic, run_state)
+        ],
+        key=lambda relic: relic.id,
+    )
+
+
+def apply_event_gain_relic(run_state: RunState, effect: EventEffect) -> RelicDefinition:
+    pool = eligible_event_relics(run_state)
+
+    if effect.tag is not None:
+        pool = [
+            relic
+            for relic in pool
+            if effect.tag in relic.tags
+        ]
+
+    if not pool:
+        if effect.tag is None:
+            raise ValueError("No event-eligible relics available.")
+        raise ValueError(
+            f"No event-eligible relics available with tag: {effect.tag}"
+        )
+
+    relic = run_state.rng.choice(pool)
+    run_state.relics.append(relic)
+    apply_relic_pickup_effects_to_run_state(run_state, relic)
+    return relic

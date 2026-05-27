@@ -17,6 +17,7 @@ from bab.run.state import RunState
 from bab.systems.event_effects import (
     apply_event_add_card_to_deck,
     apply_event_gain_gold,
+    apply_event_gain_relic,
     apply_event_heal_percent_max_hp,
     apply_event_lose_gold,
     apply_event_lose_hp,
@@ -91,6 +92,12 @@ def handle_add_card_to_deck(run_state: RunState, effect: EventEffect) -> None:
         console.print(f"[yellow]Added {card.name} to your deck.[/yellow]")
 
 
+
+def handle_gain_relic(run_state: RunState, effect: EventEffect) -> None:
+    relic = apply_event_gain_relic(run_state, effect)
+    console.print(f"[magenta]Gained relic: {relic.name}.[/magenta]")
+
+
 def handle_gain_max_hp(run_state: RunState, effect: EventEffect) -> None:
     console.print("[yellow]Max HP events are not implemented yet.[/yellow]")
 
@@ -119,6 +126,7 @@ CONSOLE_EVENT_EFFECT_HANDLERS: Mapping[str, ConsoleEventEffectHandler] = {
     "lose_gold": handle_lose_gold,
     "heal_percent_max_hp": handle_heal_percent_max_hp,
     "add_card_to_deck": handle_add_card_to_deck,
+    "gain_relic": handle_gain_relic,
     "gain_max_hp": handle_gain_max_hp,
     "remove_card": handle_remove_card,
     "open_shop": handle_open_shop,
