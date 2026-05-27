@@ -17,7 +17,7 @@ from bab.models import (
 )
 from bab.systems.gold import gold_reward_for_map_node
 from bab.systems.relics import apply_combat_start_relics, gold_reward_bonus
-from bab.run.map import MapNode, RunMap, generate_act_map, generate_boss_gauntlet_map, generate_staged_pilgrimage_map
+from bab.run.map import MapNode, RunMap, combat_difficulty_for_depth, generate_act_map, generate_boss_gauntlet_map, generate_staged_pilgrimage_map
 
 
 @dataclass
@@ -49,6 +49,7 @@ class RunState:
     shop_card_offer_count: int = 5
     shop_relic_offer_count: int = 3
     shop_price_multiplier: float = 1.0
+    event_combat_chance: float = 0.0
 
     def is_complete(self) -> bool:
         return (
@@ -108,6 +109,7 @@ def create_new_run(
     shop_card_offer_count: int = 5,
     shop_relic_offer_count: int = 3,
     shop_price_multiplier: float = 1.0,
+    event_combat_chance: float = 0.0,
     starting_gold: int = 0,
 ) -> RunState:
     if rng is None:
@@ -175,6 +177,7 @@ def create_new_run(
         shop_card_offer_count=shop_card_offer_count,
         shop_relic_offer_count=shop_relic_offer_count,
         shop_price_multiplier=shop_price_multiplier,
+        event_combat_chance=event_combat_chance,
     )
 
 
@@ -284,6 +287,83 @@ def create_combat_state_for_next_encounter(
     apply_combat_start_relics(state, run_state.relics)
     shuffle_draw_pile(state, run_state.rng)
 
+    return state
+
+
+
+def event_node_triggers_hidden_combat(
+    run_state: RunState,
+    node: MapNode,
+) -> bool:
+    if node.node_type != "event":
+        return False
+    if run_state.event_combat_chance <= 0:
+        return False
+    return run_state.rng.random() < run_state.event_combat_chance
+
+
+def _steps_before_boss_for_run_map(run_state: RunState) -> int:
+    return max(
+        node.depth
+        for node in run_state.run_map.nodes.values()
+        if node.node_type != "boss"
+    )
+
+
+def _combat_difficulty_for_hidden_event_node(
+    run_state: RunState,
+    node: MapNode,
+) -> EncounterDifficulty:
+    return combat_difficulty_for_depth(
+        node.depth,
+        _steps_before_boss_for_run_map(run_state),
+    )
+
+
+def create_combat_state_for_hidden_event_node(
+    run_state: RunState,
+    node: MapNode,
+) -> CombatState:
+    if node.node_type != "event":
+        raise ValueError("Hidden event combat can only be created for event nodes.")
+    if run_state.is_defeated():
+        raise ValueError("Cannot start combat because the player has no HP.")
+    if run_state.is_complete():
+        raise ValueError("Cannot start combat because the run is already complete.")
+
+    encounter_difficulty = _combat_difficulty_for_hidden_event_node(run_state, node)
+    encounter = choose_random_encounter(
+        run_state.encounter_database,
+        run_state.rng,
+        act=run_state.act,
+        difficulty=encounter_difficulty,
+        stage=node.stage,
+    )
+    enemies = create_enemies_for_encounter(
+        encounter.id,
+        run_state.encounter_database,
+        run_state.enemy_database,
+    )
+    player = Combatant(
+        id=run_state.character_class.id,
+        name=run_state.character_class.name,
+        max_hp=run_state.character_class.max_hp,
+        hp=run_state.current_hp,
+    )
+    state = CombatState(
+        player=player,
+        enemies=enemies,
+        max_energy=run_state.character_class.starting_energy,
+        energy=run_state.character_class.starting_energy,
+        draw_pile=list(run_state.run_deck),
+        status_database=run_state.status_database,
+        card_database=run_state.card_database,
+    )
+    state.encounter_id = encounter.id
+    state.encounter_name = encounter.name
+    state.log.append(f"Hidden event combat: {encounter.name}.")
+    apply_combat_start_relics(state, run_state.relics)
+    shuffle_draw_pile(state, run_state.rng)
     return state
 
 

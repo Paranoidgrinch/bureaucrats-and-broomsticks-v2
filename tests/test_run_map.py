@@ -268,6 +268,23 @@ def test_staged_pilgrimage_final_pre_boss_depth_is_waiting_room() -> None:
     assert all(node.next_node_ids == (run_map.boss_node_id,) for node in final_nodes)
 
 
+
+def test_staged_pilgrimage_event_nodes_are_not_narrative() -> None:
+    for seed in range(100):
+        run_map = generate_staged_pilgrimage_map(
+            Random(seed),
+            act=1,
+            steps_before_boss=9,
+            width=4,
+        )
+        event_nodes = [
+            node
+            for node in run_map.nodes.values()
+            if node.node_type == "event"
+        ]
+        assert all(node.event_type in {"risk_reward", "deck"} for node in event_nodes)
+
+
 def test_combat_difficulty_for_depth_starts_easy_then_becomes_normal() -> None:
     assert combat_difficulty_for_depth(1, 9) == "easy"
     assert combat_difficulty_for_depth(2, 9) == "easy"

@@ -149,10 +149,13 @@ def player_action_loop(state: CombatState) -> None:
             return
 
 
-def run_single_combat(run_state: RunState) -> CombatState:
+def run_single_combat(
+    run_state: RunState,
+    combat_state: CombatState | None = None,
+) -> CombatState:
     from bab.combat.turns import run_enemy_turn, start_player_turn
 
-    state = create_combat_state_for_next_encounter(run_state)
+    state = combat_state or create_combat_state_for_next_encounter(run_state)
 
     while not state.is_victory() and not state.is_defeat():
         start_player_turn(state, run_state.rng)

@@ -34,8 +34,10 @@ from bab.run.map import MapNode
 from bab.run.state import (
     RunState,
     complete_current_map_node,
+    create_combat_state_for_hidden_event_node,
     create_combat_state_for_next_encounter,
     enter_map_node,
+    event_node_triggers_hidden_combat,
     finish_victorious_combat,
 )
 from bab.systems.act_progression import advance_to_next_act, has_next_act
@@ -293,6 +295,15 @@ def resolve_random_map_node(
         return
 
     if node.node_type == "event":
+        if event_node_triggers_hidden_combat(run_state, node):
+            combat_state = create_combat_state_for_hidden_event_node(run_state, node)
+            record_combat_start(run_state, combat_state)
+            turns_played = simulate_combat(run_state, combat_state, rng, config)
+            record_combat_end(run_state, combat_state, turns_played)
+            if combat_state.is_victory():
+                finish_victorious_combat(run_state, combat_state)
+                simulate_card_reward(run_state, rng, config)
+            return
         simulate_event_node(run_state, node, rng, config)
         complete_current_map_node(run_state)
         return

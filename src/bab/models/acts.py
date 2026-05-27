@@ -20,6 +20,7 @@ class ActMapConfig(BaseModel):
     max_events: int | None = Field(default=None, ge=0)
     max_treasures: int | None = Field(default=None, ge=0)
     max_elites: int | None = Field(default=None, ge=0)
+    event_combat_chance: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 class ActTreasureConfig(BaseModel):

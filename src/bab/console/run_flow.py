@@ -39,6 +39,8 @@ from bab.run.state import (
     RunState,
     create_new_run,
     enter_map_node,
+    create_combat_state_for_hidden_event_node,
+    event_node_triggers_hidden_combat,
     finish_victorious_combat,
 )
 from bab.console.treasure_flow import resolve_treasure_node
@@ -105,6 +107,7 @@ def create_run_state(
         shop_card_offer_count=catalog.act_manifest.shop.card_offer_count,
         shop_relic_offer_count=catalog.act_manifest.shop.relic_offer_count,
         shop_price_multiplier=catalog.act_manifest.shop.price_multiplier,
+        event_combat_chance=catalog.act_manifest.map.event_combat_chance,
     )
 
 
@@ -207,8 +210,12 @@ def choose_next_map_node(run_state: RunState) -> MapNode:
         return selected_node
 
 
-def resolve_combat_node(run_state: RunState, node: MapNode) -> None:
-    state = run_single_combat(run_state)
+def resolve_combat_node(
+    run_state: RunState,
+    node: MapNode,
+    combat_state: object | None = None,
+) -> None:
+    state = run_single_combat(run_state, combat_state=combat_state)
 
     console.print()
     print_combat_state(state)
@@ -240,6 +247,22 @@ def resolve_combat_node(run_state: RunState, node: MapNode) -> None:
         console.print("[yellow]No card reward was issued after this fight.[/yellow]")
 
 
+
+
+def resolve_hidden_event_combat_node(run_state: RunState, node: MapNode) -> None:
+    console.print(
+        Panel(
+            "The promised office turns out to be occupied by a problem with teeth.",
+            title="Event Complication",
+        )
+    )
+    hidden_combat_state = create_combat_state_for_hidden_event_node(run_state, node)
+    resolve_combat_node(
+        run_state,
+        node,
+        combat_state=hidden_combat_state,
+    )
+
 def resolve_map_node(run_state: RunState, node: MapNode) -> None:
     console.print()
     console.print(Panel(format_map_node(node), title="Entering Map Node"))
@@ -249,6 +272,9 @@ def resolve_map_node(run_state: RunState, node: MapNode) -> None:
         return
 
     if node.node_type == "event":
+        if event_node_triggers_hidden_combat(run_state, node):
+            resolve_hidden_event_combat_node(run_state, node)
+            return
         resolve_event_node(run_state, node)
         return
 

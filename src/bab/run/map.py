@@ -102,6 +102,16 @@ def _choose_event_type(rng: Random) -> EventType:
     )
 
 
+
+def _choose_staged_event_type(rng: Random) -> EventType:
+    return rng.choice(
+        [
+            "risk_reward",
+            "deck",
+        ]
+    )
+
+
 def _choose_start_lanes(
     rng: Random,
     *,
@@ -343,7 +353,7 @@ def _make_staged_node(
             act=act,
             depth=depth,
             node_type=node_type,
-            event_type=_choose_event_type(rng),
+            event_type=_choose_staged_event_type(rng),
             stage=stage,
         )
 

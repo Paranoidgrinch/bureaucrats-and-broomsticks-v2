@@ -52,3 +52,12 @@ def test_act_1_uses_staged_pilgrimage_runtime_config() -> None:
     assert sum(node.node_type == "treasure" for node in non_boss_nodes) <= 1
     assert sum(node.node_type == "elite" for node in non_boss_nodes) <= 2
     assert {node.stage for node in non_boss_nodes if node.depth == 9} == {"final_office"}
+
+
+
+def test_act_1_sets_hidden_event_combat_chance() -> None:
+    catalog = load_content_catalog_from_act_manifest("data/acts/act_1_city.json")
+    run_state = create_run_state(catalog=catalog)
+
+    assert catalog.act_manifest.map.event_combat_chance == 0.10
+    assert run_state.event_combat_chance == 0.10
