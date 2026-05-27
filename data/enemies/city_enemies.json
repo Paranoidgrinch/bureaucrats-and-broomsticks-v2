@@ -731,10 +731,7 @@
       "city",
       "beast",
       "support",
-      "normal_balance_patch_v1",
-      "seal",
-      "certification",
-      "stage_seal"
+      "normal_balance_patch_v1"
     ]
   },
   {
@@ -789,10 +786,7 @@
     "tags": [
       "city",
       "construct",
-      "tank",
-      "ordinance",
-      "civic_law",
-      "stage_ordinance"
+      "tank"
     ]
   },
   {
@@ -853,10 +847,7 @@
     "tags": [
       "city",
       "beast",
-      "bureaucracy",
-      "seal",
-      "certification",
-      "stage_seal"
+      "bureaucracy"
     ]
   },
   {
@@ -916,13 +907,7 @@
     "tags": [
       "city",
       "deadline",
-      "normal_balance_patch_v1",
-      "seal",
-      "certification",
-      "stage_seal",
-      "delay",
-      "waiting",
-      "stage_delay"
+      "normal_balance_patch_v1"
     ]
   },
   {
@@ -1446,10 +1431,7 @@
       "city",
       "spirit",
       "bureaucracy",
-      "normal_balance_patch_v1",
-      "ordinance",
-      "civic_law",
-      "stage_ordinance"
+      "normal_balance_patch_v1"
     ]
   },
   {
@@ -1737,9 +1719,6 @@
       "construct",
       "bailiff",
       "normal_balance_patch_v1",
-      "ordinance",
-      "civic_law",
-      "stage_ordinance",
       "enforcement",
       "civic_force",
       "stage_enforcement"
@@ -3162,30 +3141,18 @@
   {
     "id": "wax_notary",
     "name": "Wax Notary",
-    "max_hp": 30,
+    "max_hp": 38,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "warm_the_seal",
-        "name": "Warm the Seal",
-        "intent_type": "block",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 7
-          }
-        ]
-      },
-      {
-        "id": "press_into_record",
-        "name": "Press into Record",
+        "id": "drip_hot_wax",
+        "name": "Drip Hot Wax",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 5
+            "amount": 6
           },
           {
             "type": "apply_status",
@@ -3196,20 +3163,31 @@
         ]
       },
       {
-        "id": "certify_the_delay",
-        "name": "Certify the Delay",
-        "intent_type": "debuff",
+        "id": "harden_the_seal",
+        "name": "Harden the Seal",
+        "intent_type": "block",
         "actions": [
           {
-            "type": "apply_status",
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "seal_the_copy",
+        "name": "Seal the Copy",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
             "target": "player",
-            "status": "paperwork",
-            "amount": 1
+            "amount": 4
           },
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 4
+            "amount": 6
           }
         ]
       }
@@ -3219,7 +3197,9 @@
       "seal",
       "certification",
       "paperwork_pressure",
-      "stage_seal"
+      "stage_seal",
+      "wax",
+      "official"
     ]
   },
   {
@@ -3281,24 +3261,25 @@
       }
     ],
     "tags": [
-      "city",
-      "seal",
-      "certification",
-      "paperwork_pressure",
-      "stage_seal"
+      "city"
     ]
   },
   {
     "id": "seal_witness",
     "name": "Seal Witness",
-    "max_hp": 26,
+    "max_hp": 34,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "watch_you_sign",
-        "name": "Watch You Sign",
-        "intent_type": "debuff",
+        "id": "attest_the_damage",
+        "name": "Attest the Damage",
+        "intent_type": "mixed",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
           {
             "type": "apply_status",
             "target": "player",
@@ -3308,26 +3289,27 @@
         ]
       },
       {
-        "id": "raise_the_counter_screen",
-        "name": "Raise the Counter Screen",
+        "id": "protected_testimony",
+        "name": "Protected Testimony",
         "intent_type": "block",
         "actions": [
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 6
+            "amount": 9
           }
         ]
       },
       {
-        "id": "attest_with_a_cane",
-        "name": "Attest with a Cane",
-        "intent_type": "attack",
+        "id": "signed_testimony",
+        "name": "Signed Testimony",
+        "intent_type": "debuff",
         "actions": [
           {
-            "type": "deal_damage",
+            "type": "apply_status",
             "target": "player",
-            "amount": 6
+            "status": "paperwork",
+            "amount": 2
           }
         ]
       }
@@ -3337,55 +3319,61 @@
       "seal",
       "certification",
       "paperwork_pressure",
-      "stage_seal"
+      "stage_seal",
+      "witness"
     ]
   },
   {
     "id": "ordinance_tablet",
     "name": "Ordinance Tablet",
-    "max_hp": 32,
+    "max_hp": 46,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "quote_subsection",
-        "name": "Quote Subsection",
-        "intent_type": "debuff",
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "doubt",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "stone_margin",
-        "name": "Stone Margin",
-        "intent_type": "block",
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 7
-          }
-        ]
-      },
-      {
-        "id": "falling_clause",
-        "name": "Falling Clause",
+        "id": "etched_subsection",
+        "name": "Etched Subsection",
         "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 5
+            "amount": 7
           },
           {
             "type": "apply_status",
             "target": "player",
             "status": "doubt",
             "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stone_precedent",
+        "name": "Stone Precedent",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "cited_in_full",
+        "name": "Cited in Full",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
           }
         ]
       }
@@ -3395,21 +3383,39 @@
       "ordinance",
       "civic_law",
       "doubt_pressure",
-      "stage_ordinance"
+      "stage_ordinance",
+      "tablet",
+      "construct"
     ]
   },
   {
     "id": "bylaw_gargoyle",
     "name": "Bylaw Gargoyle",
-    "max_hp": 34,
-    "intent_pattern": "weighted_random",
+    "max_hp": 48,
+    "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "recite_the_bylaw",
-        "name": "Recite the Bylaw",
-        "intent_type": "debuff",
-        "weight": 3,
+        "id": "rooftop_bylaw",
+        "name": "Rooftop Bylaw",
+        "intent_type": "attack",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "unmoving_precedent",
+        "name": "Unmoving Precedent",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          },
           {
             "type": "apply_status",
             "target": "player",
@@ -3419,23 +3425,9 @@
         ]
       },
       {
-        "id": "fold_wings_over_plaque",
-        "name": "Fold Wings over Plaque",
-        "intent_type": "block",
-        "weight": 3,
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 6
-          }
-        ]
-      },
-      {
-        "id": "drop_from_the_arch",
-        "name": "Drop from the Arch",
+        "id": "cite_subclause",
+        "name": "Cite Subclause",
         "intent_type": "mixed",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
@@ -3443,36 +3435,9 @@
             "amount": 6
           },
           {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 3
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "ordinance",
-      "civic_law",
-      "doubt_pressure",
-      "stage_ordinance"
-    ]
-  },
-  {
-    "id": "street_law_writ",
-    "name": "Street-Law Writ",
-    "max_hp": 28,
-    "intent_pattern": "cycle",
-    "intents": [
-      {
-        "id": "declare_the_cobble_precedent",
-        "name": "Declare the Cobble Precedent",
-        "intent_type": "mixed",
-        "actions": [
-          {
             "type": "apply_status",
             "target": "player",
-            "status": "doubt",
+            "status": "paperwork",
             "amount": 1
           },
           {
@@ -3481,28 +3446,69 @@
             "amount": 4
           }
         ]
-      },
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "gargoyle",
+      "construct"
+    ]
+  },
+  {
+    "id": "street_law_writ",
+    "name": "Street-Law Writ",
+    "max_hp": 38,
+    "intent_pattern": "cycle",
+    "intents": [
       {
-        "id": "stamp_the_pavement",
-        "name": "Stamp the Pavement",
-        "intent_type": "attack",
+        "id": "cobbles_cite_you",
+        "name": "Cobbles Cite You",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
             "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
           }
         ]
       },
       {
-        "id": "raise_a_legal_corner",
-        "name": "Raise a Legal Corner",
-        "intent_type": "block",
+        "id": "local_exception",
+        "name": "Local Exception",
+        "intent_type": "mixed",
         "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 7
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "corner_clause",
+        "name": "Corner Clause",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
           }
         ]
       }
@@ -3512,20 +3518,27 @@
       "ordinance",
       "civic_law",
       "doubt_pressure",
-      "stage_ordinance"
+      "stage_ordinance",
+      "writ",
+      "street"
     ]
   },
   {
     "id": "closing_bell_specter",
-    "name": "Closing-Bell Specter",
-    "max_hp": 30,
+    "name": "Closing Bell Specter",
+    "max_hp": 38,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "almost_closed",
-        "name": "Almost Closed",
-        "intent_type": "debuff",
+        "id": "premature_closing",
+        "name": "Premature Closing",
+        "intent_type": "mixed",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
           {
             "type": "apply_status",
             "target": "player",
@@ -3535,27 +3548,26 @@
         ]
       },
       {
-        "id": "toll_the_hour",
-        "name": "Toll the Hour",
+        "id": "second_toll",
+        "name": "Second Toll",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 6
+            "amount": 9
           }
         ]
       },
       {
-        "id": "last_call_at_the_counter",
-        "name": "Last Call at the Counter",
+        "id": "after_hours_echo",
+        "name": "After-Hours Echo",
         "intent_type": "mixed",
         "actions": [
           {
-            "type": "apply_status",
-            "target": "player",
-            "status": "panic",
-            "amount": 1
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
           },
           {
             "type": "apply_status",
@@ -3571,21 +3583,40 @@
       "delay",
       "waiting",
       "fatigue_intro",
-      "stage_delay"
+      "stage_delay",
+      "bell",
+      "specter"
     ]
   },
   {
     "id": "waiting_bench_gremlin",
     "name": "Waiting-Bench Gremlin",
-    "max_hp": 28,
-    "intent_pattern": "weighted_random",
+    "max_hp": 36,
+    "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "make_room_for_no_one",
-        "name": "Make Room for No One",
-        "intent_type": "block",
-        "weight": 2,
+        "id": "splintered_sit",
+        "name": "Splintered Sit",
+        "intent_type": "attack",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "settle_in",
+        "name": "Settle In",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
           {
             "type": "gain_block",
             "target": "owner",
@@ -3594,24 +3625,9 @@
         ]
       },
       {
-        "id": "sagging_patience",
-        "name": "Sagging Patience",
-        "intent_type": "debuff",
-        "weight": 3,
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "fatigue",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "splintered_seat",
-        "name": "Splintered Seat",
+        "id": "numb_the_legs",
+        "name": "Numb the Legs",
         "intent_type": "mixed",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
@@ -3632,55 +3648,57 @@
       "delay",
       "waiting",
       "fatigue_intro",
-      "stage_delay"
+      "stage_delay",
+      "bench",
+      "gremlin"
     ]
   },
   {
     "id": "public_hours_clerk",
     "name": "Public-Hours Clerk",
-    "max_hp": 32,
+    "max_hp": 34,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "point_to_the_hours",
-        "name": "Point to the Hours",
+        "id": "shutters_down",
+        "name": "Shutters Down",
         "intent_type": "mixed",
         "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
           {
             "type": "apply_status",
             "target": "player",
             "status": "fatigue",
             "amount": 1
-          },
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 4
           }
         ]
       },
       {
-        "id": "close_the_latch",
-        "name": "Close the Latch",
-        "intent_type": "attack",
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 6
-          }
-        ]
-      },
-      {
-        "id": "come_back_tomorrow",
-        "name": "Come Back Tomorrow",
+        "id": "come_back_later",
+        "name": "Come Back Later",
         "intent_type": "debuff",
         "actions": [
           {
             "type": "apply_status",
             "target": "player",
             "status": "fatigue",
-            "amount": 1
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "closing_stamp",
+        "name": "Closing Stamp",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
           }
         ]
       }
@@ -3690,7 +3708,9 @@
       "delay",
       "waiting",
       "fatigue_intro",
-      "stage_delay"
+      "stage_delay",
+      "hours",
+      "clerk"
     ]
   },
   {
@@ -3747,7 +3767,6 @@
       "city",
       "appeal",
       "escalation",
-      "doubt_pressure",
       "paperwork_pressure",
       "stage_appeal"
     ]
@@ -3809,7 +3828,6 @@
       "city",
       "appeal",
       "escalation",
-      "doubt_pressure",
       "paperwork_pressure",
       "stage_appeal"
     ]
@@ -3868,7 +3886,6 @@
       "city",
       "appeal",
       "escalation",
-      "doubt_pressure",
       "paperwork_pressure",
       "stage_appeal"
     ]
@@ -5091,6 +5108,1655 @@
       "panic_splash",
       "bat",
       "stage_form"
+    ]
+  },
+  {
+    "id": "sealed_door_ward",
+    "name": "Sealed Door Ward",
+    "max_hp": 46,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "barred_slam",
+        "name": "Barred Slam",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "seven_wax_seals",
+        "name": "Seven Wax Seals",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 13
+          }
+        ]
+      },
+      {
+        "id": "sealed_threshold",
+        "name": "Sealed Threshold",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "construct",
+      "tank",
+      "door"
+    ]
+  },
+  {
+    "id": "chain_of_office_specter",
+    "name": "Chain of Office Specter",
+    "max_hp": 40,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "ceremonial_clink",
+        "name": "Ceremonial Clink",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "formal_authority",
+        "name": "Formal Authority",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "chain_snap",
+        "name": "Chain Snap",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "specter",
+      "chain"
+    ]
+  },
+  {
+    "id": "waxen_bailiff",
+    "name": "Waxen Bailiff",
+    "max_hp": 42,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "seal_staff_strike",
+        "name": "Seal-Staff Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "stand_over_the_ledger",
+        "name": "Stand over the Ledger",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "waxen_shove",
+        "name": "Waxen Shove",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "wax",
+      "guardian"
+    ]
+  },
+  {
+    "id": "living_certificate",
+    "name": "Living Certificate",
+    "max_hp": 28,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "paper_cut_clause",
+        "name": "Paper-Cut Clause",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "fold_into_validity",
+        "name": "Fold into Validity",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "append_the_clause",
+        "name": "Append the Clause",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 2
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "document"
+    ]
+  },
+  {
+    "id": "embossed_seal",
+    "name": "Embossed Seal",
+    "max_hp": 24,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "heavy_impression",
+        "name": "Heavy Impression",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "raised_relief",
+        "name": "Raised Relief",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "press_into_the_record",
+        "name": "Press into the Record",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "construct",
+      "support"
+    ]
+  },
+  {
+    "id": "oath_candle",
+    "name": "Oath Candle",
+    "max_hp": 20,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "blue_flame_prick",
+        "name": "Blue-Flame Prick",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "hold_the_oath",
+        "name": "Hold the Oath",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "smoke_written_oath",
+        "name": "Smoke-Written Oath",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "stage_seal",
+      "candle",
+      "support"
+    ]
+  },
+  {
+    "id": "contradictory_signpost",
+    "name": "Contradictory Signpost",
+    "max_hp": 39,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "mandatory_left",
+        "name": "Mandatory Left",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "mandatory_right",
+        "name": "Mandatory Right",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "compulsory_detour",
+        "name": "Compulsory Detour",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "signpost"
+    ]
+  },
+  {
+    "id": "bylaw_hydra",
+    "name": "Bylaw Hydra",
+    "max_hp": 44,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "conflicting_heads",
+        "name": "Conflicting Heads",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "exception_clause",
+        "name": "Exception Clause",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "reread_the_head",
+        "name": "Reread the Head",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "bylaw",
+      "beast"
+    ]
+  },
+  {
+    "id": "clause_in_the_wall",
+    "name": "Clause in the Wall",
+    "max_hp": 42,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "stone_lettering",
+        "name": "Stone Lettering",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "load_bearing_clause",
+        "name": "Load-Bearing Clause",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "addendum_crack",
+        "name": "Addendum Crack",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "wall",
+      "construct"
+    ]
+  },
+  {
+    "id": "exception_imp",
+    "name": "Exception Imp",
+    "max_hp": 24,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "loophole_prick",
+        "name": "Loophole Prick",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "duck_behind_subsection",
+        "name": "Duck Behind Subsection",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "technicality",
+        "name": "Technicality",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "exception",
+      "imp"
+    ]
+  },
+  {
+    "id": "footnote_familiar",
+    "name": "Footnote Familiar",
+    "max_hp": 22,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "see_below",
+        "name": "See Below",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "supporting_note",
+        "name": "Supporting Note",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "marginal_scratch",
+        "name": "Marginal Scratch",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 3
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "footnote",
+      "familiar",
+      "support"
+    ]
+  },
+  {
+    "id": "old_statute_ghost",
+    "name": "Old Statute Ghost",
+    "max_hp": 40,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "ancient_penalty",
+        "name": "Ancient Penalty",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "still_in_force",
+        "name": "Still in Force",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "repealed_never",
+        "name": "Repealed Never",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 11
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "statute",
+      "ghost"
+    ]
+  },
+  {
+    "id": "margin_gloss",
+    "name": "Margin Gloss",
+    "max_hp": 24,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "overrule_text",
+        "name": "Overrule Text",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "narrow_interpretation",
+        "name": "Narrow Interpretation",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "id": "marginal_cut",
+        "name": "Marginal Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "stage_ordinance",
+      "margin",
+      "gloss",
+      "support"
+    ]
+  },
+  {
+    "id": "inverted_hourglass",
+    "name": "Inverted Hourglass",
+    "max_hp": 38,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "upward_sand",
+        "name": "Upward Sand",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "glass_stillness",
+        "name": "Glass Stillness",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "stolen_minute",
+        "name": "Stolen Minute",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay",
+      "hourglass",
+      "construct"
+    ]
+  },
+  {
+    "id": "fading_number_token",
+    "name": "Fading Number Token",
+    "max_hp": 32,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "number_fades",
+        "name": "Number Fades",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "sharp_edge_token",
+        "name": "Sharp-Edge Token",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "unreadable_digit",
+        "name": "Unreadable Digit",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay",
+      "token"
+    ]
+  },
+  {
+    "id": "stationary_queue_marker",
+    "name": "Stationary Queue Marker",
+    "max_hp": 40,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "rope_slackens",
+        "name": "Rope Slackens",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "not_yet",
+        "name": "Not Yet",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "marked_still",
+        "name": "Marked Still",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay",
+      "queue_echo",
+      "marker"
+    ]
+  },
+  {
+    "id": "minute_moth",
+    "name": "Minute Moth",
+    "max_hp": 20,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "nibble_the_minute",
+        "name": "Nibble the Minute",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "dusty_wings",
+        "name": "Dusty Wings",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "land_on_the_clock",
+        "name": "Land on the Clock",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay",
+      "moth"
+    ]
+  },
+  {
+    "id": "stalled_clock_face",
+    "name": "Stalled Clock Face",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "minute_hand_jab",
+        "name": "Minute-Hand Jab",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "fixed_hour",
+        "name": "Fixed Hour",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "chime_late",
+        "name": "Chime Late",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "stage_delay",
+      "clock",
+      "construct"
+    ]
+  },
+  {
+    "id": "first_appointment",
+    "name": "First Appointment",
+    "max_hp": 26,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "called_too_early",
+        "name": "Called Too Early",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "please_wait_here",
+        "name": "Please Wait Here",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "wrong_slot",
+        "name": "Wrong Slot",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "paperless_summons",
+        "name": "Paperless Summons",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "appointment"
+    ]
+  },
+  {
+    "id": "second_appointment",
+    "name": "Second Appointment",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "late_notice",
+        "name": "Late Notice",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "all_slots_delayed",
+        "name": "All Slots Delayed",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "id": "rescheduled_cut",
+        "name": "Rescheduled Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "another_wait",
+        "name": "Another Wait",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "appointment"
+    ]
+  },
+  {
+    "id": "final_appointment",
+    "name": "Final Appointment",
+    "max_hp": 34,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "last_call",
+        "name": "Last Call",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "closed_door_pause",
+        "name": "Closed-Door Pause",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "appointment_strike",
+        "name": "Appointment Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      },
+      {
+        "id": "postponed_again",
+        "name": "Postponed Again",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "appointment"
+    ]
+  },
+  {
+    "id": "reopening_hours_monolith",
+    "name": "Reopening-Hours Monolith",
+    "max_hp": 88,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "shortly_reopens",
+        "name": "Shortly Reopens",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stone_hours",
+        "name": "Stone Hours",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 14
+          }
+        ]
+      },
+      {
+        "id": "return_tomorrow",
+        "name": "Return Tomorrow",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "new_notice_posted",
+        "name": "New Notice Posted",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "closing_slab",
+        "name": "Closing Slab",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "monolith",
+      "construct"
+    ]
+  },
+  {
+    "id": "devouring_waiting_room",
+    "name": "Devouring Waiting Room",
+    "max_hp": 66,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "chairs_creep_closer",
+        "name": "Chairs Creep Closer",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "walls_hold_still",
+        "name": "Walls Hold Still",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "lose_the_day",
+        "name": "Lose the Day",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "time_eats_back",
+        "name": "Time Eats Back",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "damage_per_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount_per_stack": 3
+          }
+        ]
+      },
+      {
+        "id": "carpet_grips_your_feet",
+        "name": "Carpet Grips Your Feet",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "room",
+      "place"
+    ]
+  },
+  {
+    "id": "minute_moth_cloud",
+    "name": "Minute-Moth Cloud",
+    "max_hp": 24,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "nibble_the_hour",
+        "name": "Nibble the Hour",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "dust_over_the_chairs",
+        "name": "Dust over the Chairs",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "wingbeat_delay",
+        "name": "Wingbeat Delay",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "settle_on_the_clock",
+        "name": "Settle on the Clock",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "fatigue",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "stage_delay",
+      "elite_delay",
+      "moth",
+      "support"
     ]
   }
 ]

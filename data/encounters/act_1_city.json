@@ -56,12 +56,7 @@
       "ink_spattered_scribe",
       "seal_bearer_toad"
     ],
-    "weight": 1,
-    "tags": [
-      "stage_seal",
-      "seal",
-      "certification"
-    ]
+    "weight": 1
   },
   {
     "id": "city_normal_03",
@@ -83,12 +78,7 @@
       "municipal_gargoyle"
     ],
     "weight": 2,
-    "tags": [
-      "stage_ordinance",
-      "ordinance",
-      "civic_law",
-      "doubt_pressure"
-    ]
+    "tags": []
   },
   {
     "id": "city_elite_01",
@@ -181,12 +171,7 @@
       "civic_bell_ringer",
       "seal_bearer_toad"
     ],
-    "weight": 1,
-    "tags": [
-      "stage_seal",
-      "seal",
-      "certification"
-    ]
+    "weight": 1
   },
   {
     "id": "city_normal_07",
@@ -274,9 +259,6 @@
     ],
     "weight": 1,
     "tags": [
-      "stage_seal",
-      "seal",
-      "certification",
       "stage_appeal",
       "appeal",
       "escalation"
@@ -350,12 +332,7 @@
       "cobblestone_bailiff"
     ],
     "weight": 1,
-    "tags": [
-      "stage_ordinance",
-      "ordinance",
-      "civic_law",
-      "doubt_pressure"
-    ]
+    "tags": []
   },
   {
     "id": "city_normal_16",
@@ -380,12 +357,7 @@
       "counter_of_certification"
     ],
     "weight": 1,
-    "tags": [
-      "stage_delay",
-      "delay",
-      "waiting",
-      "elite_delay"
-    ]
+    "tags": []
   },
   {
     "id": "city_elite_04",
@@ -396,11 +368,61 @@
       "archivists_hound"
     ],
     "weight": 1,
+    "tags": []
+  },
+  {
+    "id": "city_elite_delay_01",
+    "name": "The Three Appointments",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "first_appointment",
+      "second_appointment",
+      "final_appointment"
+    ],
+    "weight": 1,
     "tags": [
       "stage_delay",
       "delay",
       "waiting",
+      "fatigue_pressure",
       "elite_delay"
+    ]
+  },
+  {
+    "id": "city_elite_delay_02",
+    "name": "The Office That Reopens Itself",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "reopening_hours_monolith"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "elite_delay"
+    ]
+  },
+  {
+    "id": "city_elite_delay_03",
+    "name": "The Waiting Room Eats the Day",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "devouring_waiting_room",
+      "minute_moth_cloud"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_pressure",
+      "elite_delay",
+      "multi_enemy"
     ]
   },
   {
@@ -656,11 +678,11 @@
   },
   {
     "id": "city_normal_seal_02",
-    "name": "Bound in Red Ribbon",
+    "name": "The Sealed Door",
     "act": 1,
     "difficulty": "normal",
     "enemies": [
-      "red_ribbon_serpent"
+      "sealed_door_ward"
     ],
     "weight": 2,
     "tags": [
@@ -684,6 +706,92 @@
       "seal",
       "certification",
       "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_seal_04",
+    "name": "Chain of Office",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "chain_of_office_specter"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_seal_05",
+    "name": "The Waxen Bailiff",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "waxen_bailiff"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_seal_06",
+    "name": "The Certificate Is Alive",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "living_certificate",
+      "embossed_seal"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_seal_07",
+    "name": "Seal and Witness",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "wax_notary",
+      "seal_witness"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_seal_08",
+    "name": "Door Under Oath",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "sealed_door_ward",
+      "oath_candle"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_seal",
+      "seal",
+      "certification",
+      "paperwork_pressure",
+      "multi_enemy"
     ]
   },
   {
@@ -735,6 +843,90 @@
     ]
   },
   {
+    "id": "city_normal_ordinance_04",
+    "name": "Mandatory in Every Direction",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "contradictory_signpost"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_05",
+    "name": "Exception to the Exception",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "exception_imp",
+      "footnote_familiar"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_06",
+    "name": "Clause in the Wall",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "clause_in_the_wall"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_07",
+    "name": "The Bylaw Grows Heads",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "bylaw_hydra"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_ordinance_08",
+    "name": "The Margin Overrules You",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "margin_gloss",
+      "old_statute_ghost"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_ordinance",
+      "ordinance",
+      "civic_law",
+      "doubt_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
     "id": "city_normal_delay_01",
     "name": "The Bell Will Not Stop",
     "act": 1,
@@ -780,6 +972,90 @@
       "delay",
       "waiting",
       "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_04",
+    "name": "The Sand Runs Upward",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "inverted_hourglass"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_05",
+    "name": "Your Number Fades",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "fading_number_token"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_06",
+    "name": "The Queue Has Not Advanced",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "stationary_queue_marker"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro"
+    ]
+  },
+  {
+    "id": "city_normal_delay_07",
+    "name": "Minutes Become Moths",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "minute_moth",
+      "stalled_clock_face"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_delay_08",
+    "name": "The Office Waits Back",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "waiting_bench_gremlin",
+      "inverted_hourglass"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_delay",
+      "delay",
+      "waiting",
+      "fatigue_intro",
+      "multi_enemy"
     ]
   },
   {

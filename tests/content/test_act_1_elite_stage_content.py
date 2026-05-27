@@ -6,8 +6,9 @@ from bab.systems.encounters import choose_random_encounter
 
 EXPECTED_STAGE_ELITES = {
     "delay": {
-        "city_elite_03",
-        "city_elite_04",
+        "city_elite_delay_01",
+        "city_elite_delay_02",
+        "city_elite_delay_03",
     },
     "appeal": {
         "city_elite_05",
