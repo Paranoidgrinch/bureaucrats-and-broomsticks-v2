@@ -1307,10 +1307,7 @@
       "normal_balance_patch_v1",
       "counter",
       "doubt_intro",
-      "stage_counter",
-      "appeal",
-      "escalation",
-      "stage_appeal"
+      "stage_counter"
     ]
   },
   {
@@ -1370,10 +1367,7 @@
       "city",
       "sprite",
       "gold",
-      "normal_balance_patch_v1",
-      "appeal",
-      "escalation",
-      "stage_appeal"
+      "normal_balance_patch_v1"
     ]
   },
   {
@@ -1654,10 +1648,7 @@
       "city",
       "familiar",
       "tax",
-      "normal_balance_patch_v1",
-      "appeal",
-      "escalation",
-      "stage_appeal"
+      "normal_balance_patch_v1"
     ]
   },
   {
@@ -2133,9 +2124,6 @@
       "city",
       "elite_component",
       "bailiff",
-      "appeal",
-      "escalation",
-      "stage_appeal",
       "enforcement",
       "civic_force",
       "stage_enforcement"
@@ -2194,9 +2182,6 @@
       "city",
       "elite_component",
       "bailiff",
-      "appeal",
-      "escalation",
-      "stage_appeal",
       "enforcement",
       "civic_force",
       "stage_enforcement"
@@ -3716,110 +3701,54 @@
   {
     "id": "appeals_clerk",
     "name": "Appeals Clerk",
-    "max_hp": 34,
+    "max_hp": 38,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "accept_the_complaint",
-        "name": "Accept the Complaint",
+        "id": "accepted_complaint",
+        "name": "Accepted Complaint",
         "intent_type": "mixed",
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "doubt",
-            "amount": 1
-          },
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "paperwork",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "escalate_to_review",
-        "name": "Escalate to Review",
-        "intent_type": "buff",
-        "actions": [
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "stamp_the_rejection",
-        "name": "Stamp the Rejection",
-        "intent_type": "attack",
-        "actions": [
-          {
-            "type": "deal_damage",
-            "target": "player",
-            "amount": 7
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "appeal",
-      "escalation",
-      "paperwork_pressure",
-      "stage_appeal"
-    ]
-  },
-  {
-    "id": "objection_sprite",
-    "name": "Objection Sprite",
-    "max_hp": 30,
-    "intent_pattern": "weighted_random",
-    "intents": [
-      {
-        "id": "raise_objection",
-        "name": "Raise Objection",
-        "intent_type": "debuff",
-        "weight": 3,
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "doubt",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "cite_prior_delay",
-        "name": "Cite Prior Delay",
-        "intent_type": "mixed",
-        "weight": 2,
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "paperwork",
-            "amount": 1
-          },
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "sharp_little_argument",
-        "name": "Sharp Little Argument",
-        "intent_type": "attack",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
             "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "escalate_case",
+        "name": "Escalate Case",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "return_with_notes",
+        "name": "Return with Notes",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
           }
         ]
       }
@@ -3828,32 +3757,20 @@
       "city",
       "appeal",
       "escalation",
-      "paperwork_pressure",
-      "stage_appeal"
+      "strength_pressure",
+      "stage_appeal",
+      "complaint"
     ]
   },
   {
-    "id": "procedural_advocate",
-    "name": "Procedural Advocate",
-    "max_hp": 36,
+    "id": "objection_sprite",
+    "name": "Objection Sprite",
+    "max_hp": 34,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "file_counter_argument",
-        "name": "File Counter-Argument",
-        "intent_type": "debuff",
-        "actions": [
-          {
-            "type": "apply_status",
-            "target": "player",
-            "status": "paperwork",
-            "amount": 1
-          }
-        ]
-      },
-      {
-        "id": "move_to_dismiss",
-        "name": "Move to Dismiss",
+        "id": "sharp_objection",
+        "name": "Sharp Objection",
         "intent_type": "mixed",
         "actions": [
           {
@@ -3870,13 +3787,95 @@
         ]
       },
       {
-        "id": "strengthen_the_case",
-        "name": "Strengthen the Case",
-        "intent_type": "buff",
+        "id": "louder_objection",
+        "name": "Louder Objection",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "gain_strength",
             "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "interrupting_cut",
+        "name": "Interrupting Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "objection",
+      "sprite"
+    ]
+  },
+  {
+    "id": "procedural_advocate",
+    "name": "Procedural Advocate",
+    "max_hp": 42,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "argue_procedure",
+        "name": "Argue Procedure",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "raise_the_stakes",
+        "name": "Raise the Stakes",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "cross_motion",
+        "name": "Cross-Motion",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
             "amount": 1
           }
         ]
@@ -3886,8 +3885,9 @@
       "city",
       "appeal",
       "escalation",
-      "paperwork_pressure",
-      "stage_appeal"
+      "strength_pressure",
+      "stage_appeal",
+      "advocate"
     ]
   },
   {
@@ -3943,7 +3943,6 @@
       "enforcement",
       "civic_force",
       "block_pressure",
-      "strength_pressure",
       "stage_enforcement"
     ]
   },
@@ -4003,7 +4002,6 @@
       "enforcement",
       "civic_force",
       "block_pressure",
-      "strength_pressure",
       "stage_enforcement"
     ]
   },
@@ -4060,7 +4058,6 @@
       "enforcement",
       "civic_force",
       "block_pressure",
-      "strength_pressure",
       "stage_enforcement"
     ]
   },
@@ -6756,6 +6753,740 @@
       "stage_delay",
       "elite_delay",
       "moth",
+      "support"
+    ]
+  },
+  {
+    "id": "counterclaim_imp",
+    "name": "Counterclaim Imp",
+    "max_hp": 36,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "red_ink_claim",
+        "name": "Red-Ink Claim",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "spiteful_escalation",
+        "name": "Spiteful Escalation",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "double_counterclaim",
+        "name": "Double Counterclaim",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "counterclaim",
+      "imp"
+    ]
+  },
+  {
+    "id": "self_correcting_record",
+    "name": "Self-Correcting Record",
+    "max_hp": 44,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "rewrite_statement",
+        "name": "Rewrite Statement",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "correct_against_you",
+        "name": "Correct Against You",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "record_snap",
+        "name": "Record Snap",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "record"
+    ]
+  },
+  {
+    "id": "motion_to_reconsider",
+    "name": "Motion to Reconsider",
+    "max_hp": 40,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "reconsideration_cut",
+        "name": "Reconsideration Cut",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "renewed_motion",
+        "name": "Renewed Motion",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "filed_again",
+        "name": "Filed Again",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "motion"
+    ]
+  },
+  {
+    "id": "sustaining_gavel",
+    "name": "Sustaining Gavel",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "sustained_strike",
+        "name": "Sustained Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "order_in_the_motion",
+        "name": "Order in the Motion",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "id": "sustain_the_objection",
+        "name": "Sustain the Objection",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "gavel",
+      "support"
+    ]
+  },
+  {
+    "id": "lower_appellate_step",
+    "name": "Lower Appellate Step",
+    "max_hp": 26,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "first_ground",
+        "name": "First Ground",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "case_climbs",
+        "name": "Case Climbs",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "stone_step_cut",
+        "name": "Stone-Step Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "filed_upward",
+        "name": "Filed Upward",
+        "intent_type": "debuff",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "appellate_step"
+    ]
+  },
+  {
+    "id": "middle_appellate_step",
+    "name": "Middle Appellate Step",
+    "max_hp": 32,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "higher_paperwork",
+        "name": "Higher Paperwork",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "procedural_landing",
+        "name": "Procedural Landing",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 3
+          }
+        ]
+      },
+      {
+        "id": "raised_instance",
+        "name": "Raised Instance",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "staircase_strike",
+        "name": "Staircase Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "appellate_step"
+    ]
+  },
+  {
+    "id": "upper_appellate_step",
+    "name": "Upper Appellate Step",
+    "max_hp": 38,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "high_objection",
+        "name": "High Objection",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "precedent_above",
+        "name": "Precedent Above",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "final_step_falls",
+        "name": "Final Step Falls",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "escalated_filing",
+        "name": "Escalated Filing",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "appellate_step"
+    ]
+  },
+  {
+    "id": "living_petition_chorus",
+    "name": "Living Petition Chorus",
+    "max_hp": 86,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "many_signatures_speak",
+        "name": "Many Signatures Speak",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "voices_grow_louder",
+        "name": "Voices Grow Louder",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "amended_aloud",
+        "name": "Amended Aloud",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "chorus_cut",
+        "name": "Chorus Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "repeat_the_prayer",
+        "name": "Repeat the Prayer",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "petition",
+      "chorus"
+    ]
+  },
+  {
+    "id": "remanded_case_phantom",
+    "name": "Remanded Case Phantom",
+    "max_hp": 58,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "returned_decision",
+        "name": "Returned Decision",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "paperwork",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "comes_back_stronger",
+        "name": "Comes Back Stronger",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "old_ruling_strike",
+        "name": "Old Ruling Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "uncertain_remand",
+        "name": "Uncertain Remand",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "doubt_collects_interest",
+        "name": "Doubt Collects Interest",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "damage_per_status",
+            "target": "player",
+            "status": "doubt",
+            "amount_per_stack": 3
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "case",
+      "phantom"
+    ]
+  },
+  {
+    "id": "escalation_writ",
+    "name": "Escalation Writ",
+    "max_hp": 28,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "writ_rises",
+        "name": "Writ Rises",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "apply_status",
+            "target": "player",
+            "status": "doubt",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "higher_seal",
+        "name": "Higher Seal",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "pull_the_case_upward",
+        "name": "Pull the Case Upward",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "paper_edge",
+        "name": "Paper Edge",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "stage_appeal",
+      "elite_appeal",
+      "writ",
       "support"
     ]
   }

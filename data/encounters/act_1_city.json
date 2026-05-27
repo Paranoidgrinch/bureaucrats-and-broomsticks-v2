@@ -258,11 +258,7 @@
       "stamp_goblin"
     ],
     "weight": 1,
-    "tags": [
-      "stage_appeal",
-      "appeal",
-      "escalation"
-    ]
+    "tags": []
   },
   {
     "id": "city_normal_10",
@@ -295,11 +291,7 @@
       "permit_beggar"
     ],
     "weight": 1,
-    "tags": [
-      "stage_appeal",
-      "appeal",
-      "escalation"
-    ]
+    "tags": []
   },
   {
     "id": "city_normal_13",
@@ -434,11 +426,61 @@
       "stampede_of_stamps"
     ],
     "weight": 1,
+    "tags": []
+  },
+  {
+    "id": "city_elite_appeal_01",
+    "name": "The Appeal Climbs the Stairs",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "lower_appellate_step",
+      "middle_appellate_step",
+      "upper_appellate_step"
+    ],
+    "weight": 1,
     "tags": [
       "stage_appeal",
       "appeal",
       "escalation",
+      "strength_pressure",
       "elite_appeal"
+    ]
+  },
+  {
+    "id": "city_elite_appeal_02",
+    "name": "The Petition Reads Itself Aloud",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "living_petition_chorus"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "elite_appeal"
+    ]
+  },
+  {
+    "id": "city_elite_appeal_03",
+    "name": "The Case Returns Higher",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "remanded_case_phantom",
+      "escalation_writ"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "elite_appeal",
+      "multi_enemy"
     ]
   },
   {
@@ -467,12 +509,7 @@
       "ink_witch_auditor"
     ],
     "weight": 1,
-    "tags": [
-      "stage_appeal",
-      "appeal",
-      "escalation",
-      "elite_appeal"
-    ]
+    "tags": []
   },
   {
     "id": "city_elite_08",
@@ -1071,8 +1108,7 @@
       "stage_appeal",
       "appeal",
       "escalation",
-      "doubt_pressure",
-      "paperwork_pressure"
+      "strength_pressure"
     ]
   },
   {
@@ -1088,8 +1124,7 @@
       "stage_appeal",
       "appeal",
       "escalation",
-      "doubt_pressure",
-      "paperwork_pressure"
+      "strength_pressure"
     ]
   },
   {
@@ -1105,8 +1140,91 @@
       "stage_appeal",
       "appeal",
       "escalation",
-      "doubt_pressure",
-      "paperwork_pressure"
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_04",
+    "name": "Counterclaim in Red Ink",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "counterclaim_imp"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_05",
+    "name": "The Record Corrects You",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "self_correcting_record"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_06",
+    "name": "Motion to Reconsider",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "motion_to_reconsider"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_07",
+    "name": "Objection Sustained",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "objection_sprite",
+      "sustaining_gavel"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_appeal_08",
+    "name": "The Appeal Escalates",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "appeals_clerk",
+      "counterclaim_imp"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_appeal",
+      "appeal",
+      "escalation",
+      "strength_pressure",
+      "multi_enemy"
     ]
   },
   {

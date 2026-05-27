@@ -11,8 +11,9 @@ EXPECTED_STAGE_ELITES = {
         "city_elite_delay_03",
     },
     "appeal": {
-        "city_elite_05",
-        "city_elite_07",
+        "city_elite_appeal_01",
+        "city_elite_appeal_02",
+        "city_elite_appeal_03",
     },
     "enforcement": {
         "city_elite_01",
