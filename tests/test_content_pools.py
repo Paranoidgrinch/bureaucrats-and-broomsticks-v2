@@ -83,9 +83,12 @@ def test_act_1_city_event_pool_loads() -> None:
         ]
     )
 
-    assert len(event_database) >= 4
-    assert "misfiled_prophecy" in event_database
-    assert "haunted_suggestion_box" in event_database
+    assert len(event_database) == 15
+    assert "misfiling_cabinet" in event_database
+    assert "act_1_shop" in event_database
+    assert "archive_window" in event_database
+    assert all(event.act == 1 for event in event_database.values())
+    assert all(event.event_type != "narrative" for event in event_database.values())
 
 
 def test_act_1_city_events_have_player_choices() -> None:
