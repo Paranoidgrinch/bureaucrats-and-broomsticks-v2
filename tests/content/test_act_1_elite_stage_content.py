@@ -16,10 +16,10 @@ EXPECTED_STAGE_ELITES = {
         "city_elite_appeal_03",
     },
     "enforcement": {
-        "city_elite_01",
-        "city_elite_02",
-        "city_elite_06",
-        "city_elite_08",
+        "city_elite_enforcement_01",
+        "city_elite_enforcement_02",
+        "city_elite_enforcement_03",
+        "city_elite_enforcement_04",
     },
 }
 

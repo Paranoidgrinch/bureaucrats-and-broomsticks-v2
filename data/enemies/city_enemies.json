@@ -1109,10 +1109,7 @@
     "tags": [
       "city",
       "elite",
-      "construct",
-      "enforcement",
-      "civic_force",
-      "stage_enforcement"
+      "construct"
     ]
   },
   {
@@ -2123,10 +2120,7 @@
     "tags": [
       "city",
       "elite_component",
-      "bailiff",
-      "enforcement",
-      "civic_force",
-      "stage_enforcement"
+      "bailiff"
     ]
   },
   {
@@ -2181,10 +2175,7 @@
     "tags": [
       "city",
       "elite_component",
-      "bailiff",
-      "enforcement",
-      "civic_force",
-      "stage_enforcement"
+      "bailiff"
     ]
   },
   {
@@ -3893,71 +3884,31 @@
   {
     "id": "warrant_bailiff",
     "name": "Warrant Bailiff",
-    "max_hp": 38,
+    "max_hp": 46,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "read_the_warrant",
-        "name": "Read the Warrant",
-        "intent_type": "buff",
-        "actions": [
-          {
-            "type": "gain_strength",
-            "target": "owner",
-            "amount": 1
-          },
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 5
-          }
-        ]
-      },
-      {
-        "id": "serve_notice",
-        "name": "Serve Notice",
+        "id": "serve_warrant",
+        "name": "Serve Warrant",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 7
+            "amount": 8
           }
         ]
       },
       {
-        "id": "brace_behind_authority",
-        "name": "Brace Behind Authority",
-        "intent_type": "block",
+        "id": "official_stance",
+        "name": "Official Stance",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "gain_block",
             "target": "owner",
             "amount": 8
-          }
-        ]
-      }
-    ],
-    "tags": [
-      "city",
-      "enforcement",
-      "civic_force",
-      "block_pressure",
-      "stage_enforcement"
-    ]
-  },
-  {
-    "id": "levy_constable",
-    "name": "Levy Constable",
-    "max_hp": 36,
-    "intent_pattern": "weighted_random",
-    "intents": [
-      {
-        "id": "raise_the_levy",
-        "name": "Raise the Levy",
-        "intent_type": "buff",
-        "weight": 3,
-        "actions": [
+          },
           {
             "type": "gain_strength",
             "target": "owner",
@@ -3966,23 +3917,9 @@
         ]
       },
       {
-        "id": "shield_the_receipt_book",
-        "name": "Shield the Receipt Book",
-        "intent_type": "block",
-        "weight": 3,
-        "actions": [
-          {
-            "type": "gain_block",
-            "target": "owner",
-            "amount": 7
-          }
-        ]
-      },
-      {
-        "id": "collect_by_force",
-        "name": "Collect by Force",
+        "id": "iron_notice",
+        "name": "Iron Notice",
         "intent_type": "mixed",
-        "weight": 2,
         "actions": [
           {
             "type": "deal_damage",
@@ -3992,7 +3929,7 @@
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 3
+            "amount": 5
           }
         ]
       }
@@ -4001,44 +3938,109 @@
       "city",
       "enforcement",
       "civic_force",
-      "block_pressure",
-      "stage_enforcement"
+      "strength_pressure",
+      "stage_enforcement",
+      "bailiff",
+      "warrant"
     ]
   },
   {
-    "id": "gatehouse_enforcer",
-    "name": "Gatehouse Enforcer",
-    "max_hp": 40,
+    "id": "levy_constable",
+    "name": "Levy Constable",
+    "max_hp": 44,
     "intent_pattern": "cycle",
     "intents": [
       {
-        "id": "lower_the_bar",
-        "name": "Lower the Bar",
+        "id": "levy_due",
+        "name": "Levy Due",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "seized_goods",
+        "name": "Seized Goods",
         "intent_type": "block",
         "actions": [
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 8
+            "amount": 9
           }
         ]
       },
       {
-        "id": "official_shove",
-        "name": "Official Shove",
+        "id": "double_assessment",
+        "name": "Double Assessment",
         "intent_type": "attack",
         "actions": [
           {
             "type": "deal_damage",
             "target": "player",
-            "amount": 8
+            "amount": 5
+          },
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "stage_enforcement",
+      "constable",
+      "levy"
+    ]
+  },
+  {
+    "id": "gatehouse_enforcer",
+    "name": "Gatehouse Enforcer",
+    "max_hp": 50,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "gatehouse_blow",
+        "name": "Gatehouse Blow",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
           }
         ]
       },
       {
-        "id": "call_more_authority",
-        "name": "Call More Authority",
-        "intent_type": "buff",
+        "id": "bar_the_gate",
+        "name": "Bar the Gate",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "authorized_force",
+        "name": "Authorized Force",
+        "intent_type": "mixed",
         "actions": [
           {
             "type": "gain_strength",
@@ -4048,7 +4050,7 @@
           {
             "type": "gain_block",
             "target": "owner",
-            "amount": 4
+            "amount": 6
           }
         ]
       }
@@ -4057,8 +4059,10 @@
       "city",
       "enforcement",
       "civic_force",
-      "block_pressure",
-      "stage_enforcement"
+      "strength_pressure",
+      "stage_enforcement",
+      "gatehouse",
+      "enforcer"
     ]
   },
   {
@@ -7487,6 +7491,763 @@
       "stage_appeal",
       "elite_appeal",
       "writ",
+      "support"
+    ]
+  },
+  {
+    "id": "compliance_chain_guard",
+    "name": "Compliance Chain Guard",
+    "max_hp": 42,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "chain_drag",
+        "name": "Chain Drag",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "id": "tighten_compliance",
+        "name": "Tighten Compliance",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "iron_followup",
+        "name": "Iron Follow-Up",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "stage_enforcement",
+      "chain",
+      "guard"
+    ]
+  },
+  {
+    "id": "threshold_seizure_ward",
+    "name": "Threshold Seizure Ward",
+    "max_hp": 48,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "seize_at_threshold",
+        "name": "Seize at Threshold",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      },
+      {
+        "id": "lawful_hold",
+        "name": "Lawful Hold",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "threshold_slam",
+        "name": "Threshold Slam",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "stage_enforcement",
+      "threshold",
+      "ward"
+    ]
+  },
+  {
+    "id": "civic_battering_ram",
+    "name": "Civic Battering Ram",
+    "max_hp": 54,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "advance_under_warrant",
+        "name": "Advance under Warrant",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "ram_the_case",
+        "name": "Ram the Case",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "second_impact",
+        "name": "Second Impact",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 13
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "stage_enforcement",
+      "ram",
+      "construct"
+    ]
+  },
+  {
+    "id": "iron_warrant_avatar",
+    "name": "Iron Warrant Avatar",
+    "max_hp": 92,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "warrant_ignites",
+        "name": "Warrant Ignites",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "iron_authority",
+        "name": "Iron Authority",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 14
+          }
+        ]
+      },
+      {
+        "id": "served_in_steel",
+        "name": "Served in Steel",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "binding_order",
+        "name": "Binding Order",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "final_service",
+        "name": "Final Service",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 16
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "warrant",
+      "avatar",
+      "construct"
+    ]
+  },
+  {
+    "id": "seizure_marshal",
+    "name": "Seizure Marshal",
+    "max_hp": 42,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "enter_the_premises",
+        "name": "Enter the Premises",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "marshal_the_inventory",
+        "name": "Marshal the Inventory",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "lawful_strike",
+        "name": "Lawful Strike",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 11
+          }
+        ]
+      },
+      {
+        "id": "guard_the_list",
+        "name": "Guard the List",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 5
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "marshal",
+      "seizure"
+    ]
+  },
+  {
+    "id": "inventory_lantern",
+    "name": "Inventory Lantern",
+    "max_hp": 26,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "mark_the_goods",
+        "name": "Mark the Goods",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "bright_authority",
+        "name": "Bright Authority",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 4
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "lantern_glass_cut",
+        "name": "Lantern-Glass Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "seal_the_room",
+        "name": "Seal the Room",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 3
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 3
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "lantern",
+      "support"
+    ]
+  },
+  {
+    "id": "lock_cart",
+    "name": "Lock Cart",
+    "max_hp": 34,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "cartwheel_crush",
+        "name": "Cartwheel Crush",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "iron_storage",
+        "name": "Iron Storage",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 9
+          }
+        ]
+      },
+      {
+        "id": "lock_the_load",
+        "name": "Lock the Load",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "roll_over_claims",
+        "name": "Roll over Claims",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 10
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "cart",
+      "lock",
+      "construct"
+    ]
+  },
+  {
+    "id": "portcullis_judicator",
+    "name": "Portcullis Judicator",
+    "max_hp": 96,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "raise_then_drop",
+        "name": "Raise, Then Drop",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 12
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "barred_judgment",
+        "name": "Barred Judgment",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 11
+          }
+        ]
+      },
+      {
+        "id": "iron_grid",
+        "name": "Iron Grid",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 8
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 8
+          }
+        ]
+      },
+      {
+        "id": "falling_teeth",
+        "name": "Falling Teeth",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 14
+          }
+        ]
+      },
+      {
+        "id": "no_exit_order",
+        "name": "No-Exit Order",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 2
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "portcullis",
+      "judicator",
+      "gatehouse"
+    ]
+  },
+  {
+    "id": "final_notice_knight",
+    "name": "Final Notice Knight",
+    "max_hp": 60,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "notice_charge",
+        "name": "Notice Charge",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "shielded_service",
+        "name": "Shielded Service",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "id": "deadline_cut",
+        "name": "Deadline Cut",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 12
+          }
+        ]
+      },
+      {
+        "id": "armored_delivery",
+        "name": "Armored Delivery",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 6
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "id": "last_warning",
+        "name": "Last Warning",
+        "intent_type": "buff",
+        "actions": [
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "knight",
+      "notice"
+    ]
+  },
+  {
+    "id": "sealed_spear",
+    "name": "Sealed Spear",
+    "max_hp": 30,
+    "intent_pattern": "cycle",
+    "intents": [
+      {
+        "id": "sealed_thrust",
+        "name": "Sealed Thrust",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 7
+          }
+        ]
+      },
+      {
+        "id": "guard_the_notice",
+        "name": "Guard the Notice",
+        "intent_type": "block",
+        "actions": [
+          {
+            "type": "gain_block",
+            "target": "all_enemies",
+            "amount": 4
+          },
+          {
+            "type": "gain_block",
+            "target": "owner",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "id": "authorized_pierce",
+        "name": "Authorized Pierce",
+        "intent_type": "mixed",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 5
+          },
+          {
+            "type": "gain_strength",
+            "target": "owner",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "id": "long_reach",
+        "name": "Long Reach",
+        "intent_type": "attack",
+        "actions": [
+          {
+            "type": "deal_damage",
+            "target": "player",
+            "amount": 9
+          }
+        ]
+      }
+    ],
+    "tags": [
+      "city",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "stage_enforcement",
+      "elite_enforcement",
+      "spear",
       "support"
     ]
   }

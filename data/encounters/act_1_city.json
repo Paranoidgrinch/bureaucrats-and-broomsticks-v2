@@ -81,6 +81,138 @@
     "tags": []
   },
   {
+    "id": "city_normal_enforcement_01",
+    "name": "Warrant Served in Person",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "warrant_bailiff"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_02",
+    "name": "The Levy Comes Due",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "levy_constable"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_03",
+    "name": "The Gatehouse Enforces Procedure",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "gatehouse_enforcer"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_04",
+    "name": "Chains of Compliance",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "compliance_chain_guard"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_05",
+    "name": "Seized at the Threshold",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "threshold_seizure_ward"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_06",
+    "name": "The Civic Ram Advances",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "civic_battering_ram"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_07",
+    "name": "Bailiff and Chain",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "warrant_bailiff",
+      "compliance_chain_guard"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_normal_enforcement_08",
+    "name": "The Gate Is Closed",
+    "act": 1,
+    "difficulty": "normal",
+    "enemies": [
+      "gatehouse_enforcer",
+      "threshold_seizure_ward"
+    ],
+    "weight": 2,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "strength_pressure",
+      "multi_enemy"
+    ]
+  },
+  {
     "id": "city_elite_01",
     "name": "The Senior Clerk",
     "act": 1,
@@ -89,12 +221,7 @@
       "senior_clerk"
     ],
     "weight": 1,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "elite_enforcement"
-    ]
+    "tags": []
   },
   {
     "id": "city_elite_02",
@@ -105,11 +232,83 @@
       "red_tape_golem"
     ],
     "weight": 1,
+    "tags": []
+  },
+  {
+    "id": "city_elite_enforcement_01",
+    "name": "The Warrant Becomes Iron",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "iron_warrant_avatar"
+    ],
+    "weight": 1,
     "tags": [
       "stage_enforcement",
       "enforcement",
       "civic_force",
+      "block_pressure",
+      "strength_pressure",
       "elite_enforcement"
+    ]
+  },
+  {
+    "id": "city_elite_enforcement_02",
+    "name": "The Seizure Procession",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "seizure_marshal",
+      "inventory_lantern",
+      "lock_cart"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "elite_enforcement",
+      "multi_enemy"
+    ]
+  },
+  {
+    "id": "city_elite_enforcement_03",
+    "name": "The Gatehouse Drops the Portcullis",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "portcullis_judicator"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "elite_enforcement"
+    ]
+  },
+  {
+    "id": "city_elite_enforcement_04",
+    "name": "The Final Notice Arrives Armed",
+    "act": 1,
+    "difficulty": "elite",
+    "enemies": [
+      "final_notice_knight",
+      "sealed_spear"
+    ],
+    "weight": 1,
+    "tags": [
+      "stage_enforcement",
+      "enforcement",
+      "civic_force",
+      "block_pressure",
+      "strength_pressure",
+      "elite_enforcement",
+      "multi_enemy"
     ]
   },
   {
@@ -493,12 +692,7 @@
       "bailiff_of_warrants"
     ],
     "weight": 1,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "elite_enforcement"
-    ]
+    "tags": []
   },
   {
     "id": "city_elite_07",
@@ -520,12 +714,7 @@
       "licensed_chimera"
     ],
     "weight": 1,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "elite_enforcement"
-    ]
+    "tags": []
   },
   {
     "id": "city_boss_02",
@@ -1225,57 +1414,6 @@
       "escalation",
       "strength_pressure",
       "multi_enemy"
-    ]
-  },
-  {
-    "id": "city_normal_enforcement_01",
-    "name": "Warrant Served in Person",
-    "act": 1,
-    "difficulty": "normal",
-    "enemies": [
-      "warrant_bailiff"
-    ],
-    "weight": 2,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "block_pressure",
-      "strength_pressure"
-    ]
-  },
-  {
-    "id": "city_normal_enforcement_02",
-    "name": "The Levy Comes Due",
-    "act": 1,
-    "difficulty": "normal",
-    "enemies": [
-      "levy_constable"
-    ],
-    "weight": 2,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "block_pressure",
-      "strength_pressure"
-    ]
-  },
-  {
-    "id": "city_normal_enforcement_03",
-    "name": "The Gatehouse Enforces Procedure",
-    "act": 1,
-    "difficulty": "normal",
-    "enemies": [
-      "gatehouse_enforcer"
-    ],
-    "weight": 2,
-    "tags": [
-      "stage_enforcement",
-      "enforcement",
-      "civic_force",
-      "block_pressure",
-      "strength_pressure"
     ]
   },
   {
