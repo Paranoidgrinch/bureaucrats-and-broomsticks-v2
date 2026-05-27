@@ -285,6 +285,34 @@ def test_staged_pilgrimage_event_nodes_are_not_narrative() -> None:
         assert all(node.event_type in {"risk_reward", "deck"} for node in event_nodes)
 
 
+
+def test_staged_pilgrimage_event_type_distribution_follows_pool_weights() -> None:
+    event_type_counts = {
+        "risk_reward": 0,
+        "deck": 0,
+    }
+
+    for seed in range(1500):
+        run_map = generate_staged_pilgrimage_map(
+            Random(seed),
+            act=1,
+            steps_before_boss=9,
+            width=4,
+        )
+        for node in run_map.nodes.values():
+            if node.node_type == "event":
+                assert node.event_type in {"risk_reward", "deck"}
+                event_type_counts[node.event_type] += 1
+
+    total_events = sum(event_type_counts.values())
+    assert total_events > 0
+
+    risk_reward_ratio = event_type_counts["risk_reward"] / total_events
+
+    assert event_type_counts["risk_reward"] > event_type_counts["deck"]
+    assert 0.50 <= risk_reward_ratio <= 0.58
+
+
 def test_combat_difficulty_for_depth_starts_easy_then_becomes_normal() -> None:
     assert combat_difficulty_for_depth(1, 9) == "easy"
     assert combat_difficulty_for_depth(2, 9) == "easy"

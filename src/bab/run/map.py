@@ -28,6 +28,10 @@ STAGED_PILGRIMAGE_STAGES: dict[int, str] = {
 }
 
 STAGED_PILGRIMAGE_BOSS_STAGE = "commissioner"
+STAGED_PILGRIMAGE_EVENT_TYPE_WEIGHTS: tuple[tuple[EventType, float], ...] = (
+    ("risk_reward", 8.0),
+    ("deck", 7.0),
+)
 
 STAGED_PILGRIMAGE_WEIGHTS: dict[int, tuple[tuple[MapNodeType, float], ...]] = {
     1: (("combat", 1.0),),
@@ -104,12 +108,19 @@ def _choose_event_type(rng: Random) -> EventType:
 
 
 def _choose_staged_event_type(rng: Random) -> EventType:
-    return rng.choice(
-        [
-            "risk_reward",
-            "deck",
-        ]
-    )
+    event_types = [
+        event_type
+        for event_type, _weight in STAGED_PILGRIMAGE_EVENT_TYPE_WEIGHTS
+    ]
+    weights = [
+        weight
+        for _event_type, weight in STAGED_PILGRIMAGE_EVENT_TYPE_WEIGHTS
+    ]
+    return rng.choices(
+        population=event_types,
+        weights=weights,
+        k=1,
+    )[0]
 
 
 def _choose_start_lanes(
