@@ -66,7 +66,7 @@
     "max_events": 3,
     "max_treasures": 1,
     "max_elites": 2,
-    "event_combat_chance": 0.1
+    "event_combat_chance": 0.2
   },
   "treasure": {
     "mimic_chance": 0.05,

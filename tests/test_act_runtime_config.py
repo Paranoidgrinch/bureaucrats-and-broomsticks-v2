@@ -59,5 +59,5 @@ def test_act_1_sets_hidden_event_combat_chance() -> None:
     catalog = load_content_catalog_from_act_manifest("data/acts/act_1_city.json")
     run_state = create_run_state(catalog=catalog)
 
-    assert catalog.act_manifest.map.event_combat_chance == 0.10
-    assert run_state.event_combat_chance == 0.10
+    assert catalog.act_manifest.map.event_combat_chance == 0.20
+    assert run_state.event_combat_chance == 0.20
