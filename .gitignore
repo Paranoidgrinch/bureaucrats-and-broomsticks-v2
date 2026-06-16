@@ -55,3 +55,9 @@ runs/act1_v2_bureaucrat_random_*/
 
 # Local diagnostics / random bot reports
 runs/diagnostics/
+
+# Release build output
+build/
+dist/
+artifacts/
+*.spec

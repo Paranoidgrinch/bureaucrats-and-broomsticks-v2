@@ -1,0 +1,24 @@
+BUREAUCRATS AND BROOMSTICKS - WINDOWS BETA
+
+HOW TO START
+
+1. Extract the complete ZIP archive.
+2. Keep all extracted files and the _internal folder together.
+3. Double-click Bureaucrats-and-Broomsticks.exe.
+4. Follow the instructions in the terminal window.
+
+No Python installation is required.
+
+CONTROLS
+
+- Enter the displayed number to choose a character, map node, card, target,
+  reward, or event option.
+- Type end to finish a combat turn.
+- Type log to show the complete combat log.
+- Type quit to leave the game.
+
+This is an unsigned beta build. Windows may ask for confirmation before
+starting an application downloaded from the internet.
+
+Issues:
+https://github.com/Paranoidgrinch/bureaucrats-and-broomsticks-v2/issues

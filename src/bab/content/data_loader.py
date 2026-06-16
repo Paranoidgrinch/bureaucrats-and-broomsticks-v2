@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -13,7 +14,18 @@ from bab.models import (
     ActManifest,
 )
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+def _application_root() -> Path:
+    """Return the repository root in development or PyInstaller's bundle root."""
+    if getattr(sys, "frozen", False):
+        bundle_root = getattr(sys, "_MEIPASS", None)
+        if bundle_root is None:
+            raise RuntimeError("Frozen application is missing its bundle root.")
+        return Path(bundle_root)
+
+    return Path(__file__).resolve().parents[3]
+
+
+PROJECT_ROOT = _application_root()
 
 
 def load_json(relative_path: str) -> Any:
