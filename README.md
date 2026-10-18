@@ -25,6 +25,13 @@ Try not to violate departmental policy.
 
 </div>
 
+> [!NOTE]
+> **This is the original Python version of the game, with every mechanic hardcoded.** It stays playable as a
+> terminal beta, but it is no longer developed. Bureaucrats & Broomsticks has been rebuilt on the
+> data-driven [RogueDeck engine](https://github.com/Paranoidgrinch/RogueDeck-Core), with a Godot frontend in
+> [bnb-godot](https://github.com/Paranoidgrinch/bnb-godot) and the content in
+> [bnb-content](https://github.com/Paranoidgrinch/bnb-content).
+
 ---
 
 ## Play the beta
@@ -149,7 +156,7 @@ Your idea may become a design challenge for the next generation of the engine.
 
 ---
 
-## What comes next?
+## What came next
 
 *Bureaucrats and Broomsticks* became a large experiment in deterministic combat, data-driven content and automated playtesting.
 
@@ -157,7 +164,9 @@ Its architectural limits led directly to:
 
 ### ⚙️ [RogueDeck Core](https://github.com/Paranoidgrinch/RogueDeck-Core)
 
-A modular C# roguelike deckbuilding engine designed so that new mechanics extend the system instead of becoming another hardcoded exception.
+A modular C# roguelike deckbuilding engine designed so that new mechanics extend the system instead of becoming another hardcoded exception — with [RogueDeck Studio](https://studio.moonvineforge.com) to build deckbuilders without code.
+
+The game itself now lives on that engine: [bnb-content](https://github.com/Paranoidgrinch/bnb-content) · [bnb-godot](https://github.com/Paranoidgrinch/bnb-godot) · [bnb-runs](https://github.com/Paranoidgrinch/bnb-runs).
 
 ---
 
@@ -187,3 +196,9 @@ Follow [@Paranoidgrinch](https://github.com/Paranoidgrinch) to watch the next me
 <em>Small studio. Careful craft. Unusual worlds.</em>
 
 </div>
+
+---
+
+## License
+
+[PolyForm Noncommercial 1.0.0](LICENSE) — free for noncommercial use with credit; commercial use needs permission.
